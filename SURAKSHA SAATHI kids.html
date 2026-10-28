@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suraksha Saathi Kids - Money Journey</title>
+<style>
+:root{--navy:#17365d;--blue:#2878d0;--teal:#159b91;--green:#239653;--orange:#f2a23a;--red:#d84c4c;--bg:#f2f7fc;--text:#26364a}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
+button,select{font:inherit}button{cursor:pointer;border:0;border-radius:9px;padding:10px 14px;font-weight:bold}button:hover{filter:brightness(.96)}button:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:var(--blue);color:white}.success{background:var(--green);color:white}.danger{background:var(--red);color:white}.secondary{background:#e8eff8;color:var(--navy)}.gold{background:#ffe5a6;color:#654300}
+header{background:linear-gradient(115deg,#15345b,#176d83);color:white;padding:15px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}.brand img{width:60px;height:60px;object-fit:contain;background:white;border-radius:10px}.brand h1{font-size:25px;margin:0}.brand p{margin:5px 0 0;font-size:13px}
+header select{padding:9px;border-radius:8px;border:0}
+main{max-width:1180px;margin:auto;padding:18px}.screen{display:none}.screen.active{display:block}
+.panel{background:white;border-radius:15px;padding:18px;box-shadow:0 3px 13px #17365d12;margin-bottom:16px}
+h2{margin:0 0 12px;color:var(--navy);font-size:22px}h3{color:var(--navy);margin:8px 0}
+p{line-height:1.5}.muted{color:#65758a}.center{text-align:center}
+.welcome{max-width:720px;margin:25px auto;text-align:center;padding:28px}.big-logo{width:125px;height:125px;object-fit:contain}
+.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.stat{background:#f0f5fc;border-radius:10px;padding:12px}.stat small{display:block;color:#65758a;margin-bottom:6px}.stat strong{font-size:21px;color:var(--navy)}
+.track{height:10px;background:#dce6f1;border-radius:20px;overflow:hidden;margin-top:7px}.fill{height:100%;background:var(--teal);transition:width .2s}
+.needs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.need{padding:12px;border:1px solid #e4ebf3;border-radius:11px}
+.game-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(270px,1fr);gap:16px;align-items:start}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:11px}
+.item{border:1px solid #e2eaf3;border-radius:12px;padding:9px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.art{width:100%;height:105px;background:linear-gradient(145deg,#edf6ff,#f9fbff);border-radius:9px;display:grid;place-items:center;overflow:hidden;margin-bottom:8px}.art svg{width:100%;height:100%;max-width:140px}
+.item h4{margin:3px 0 5px;font-size:14px}.price{font-weight:bold;color:var(--green);margin-bottom:8px}
+.item button{width:100%;padding:9px 4px;font-size:12px}.tag{font-size:10px;text-transform:uppercase;border-radius:20px;padding:4px 7px;background:#e4f3ff;color:#2462a2;margin-bottom:6px}.want-tag{background:#fff0d7;color:#9a6100}
+.shop-heading,.day-row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.wallet{background:#e8f7ee;border:1px solid #ccebd8;padding:10px;border-radius:9px;font-weight:bold;color:#176b3b}
+.offer{border:2px solid #f2c36d;background:#fff9ed;border-radius:13px;padding:14px;margin-top:14px}.offer-label{color:#a56400;font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:.5px}
+.offer-items{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.offer-item{background:white;border:1px solid #efddb6;padding:8px 10px;border-radius:8px;font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.feedback{padding:12px;border-radius:9px;margin-top:10px;line-height:1.5;display:none}.feedback.show{display:block}.good{background:#e5f7eb;color:#175f34}.bad{background:#fff0ed;color:#8e3027}.info{background:#eaf3ff;color:#204e85}
+.cupboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(95px,1fr));gap:9px}.cupboard-item{text-align:center;background:#f4f7fb;padding:8px;border-radius:10px}.cupboard-item .art{height:70px}.cupboard-item .art svg{max-height:70px}.cupboard-item strong{font-size:12px}
+.notice{background:#eaf3ff;border-left:4px solid var(--blue);padding:12px;border-radius:8px;font-size:14px}
+footer{text-align:center;color:#65758a;padding:15px;font-size:12px}
+@media(max-width:760px){main{padding:10px}.game-grid{grid-template-columns:1fr}.stat-grid,.needs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.welcome{padding:18px;margin:10px auto}.brand img{width:48px;height:48px}.brand h1{font-size:20px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand">
+  <img src="suraksha-saathi-logo.png" alt="Suraksha Saathi logo">
+  <div><h1 id="brandTitle">Suraksha Saathi Kids</h1><p id="brandSubtitle">Learn to spend wisely. Stay safe. Save money.</p></div>
+ </div>
+ <select id="language" aria-label="Language"><option value="en">English</option><option value="hi">हिन्दी</option></select>
+</header>
+<main>
+<section id="welcomeScreen" class="screen active">
+ <div class="panel welcome">
+  <img class="big-logo" src="suraksha-saathi-logo.png" alt="Suraksha Saathi">
+  <h2 data-i="welcomeTitle">Your 7-Day Money Journey!</h2>
+  <p data-i="welcomeText">You receive ₹50 each day. Buy needs, enjoy wants, spot risky shopping offers and try to save ₹200.</p>
+  <div class="notice" data-i="welcomeRule">Every day has one shopping offer. Decide whether it is safe before finishing the day.</div>
+  <p><b data-i="goalLabel">Savings goal:</b> ₹200</p>
+  <button class="primary" id="startBtn" data-i="start">Start Journey</button>
+  <button class="secondary" id="resumeBtn" data-i="resume" hidden>Continue Journey</button>
+  <button class="secondary" id="newGameBtn" data-i="newGame" hidden>Start a New Journey</button>
+ </div>
+</section>
+
+<section id="gameScreen" class="screen">
+ <div class="panel">
+  <div class="day-row"><h2 id="dayHeading">Day 1 of 7</h2><div class="wallet" id="wallet">Wallet: ₹50</div></div>
+  <div class="stat-grid">
+   <div class="stat"><small data-i="walletLabel">Money in wallet</small><strong id="walletStat">₹50</strong></div>
+   <div class="stat"><small data-i="savedLabel">Total saved</small><strong id="savedStat">₹0</strong></div>
+   <div class="stat"><small data-i="spentLabel">Total spent</small><strong id="spentStat">₹0</strong></div>
+   <div class="stat"><small data-i="scoreLabel">Safety score</small><strong id="scoreStat">0/7</strong></div>
+  </div>
+  <p><b data-i="goalLabel">Savings goal:</b> ₹200</p>
+  <div class="track"><div class="fill" id="goalBar" style="width:0%"></div></div>
+  <p class="muted" id="goalProgress">₹0 / ₹200</p>
+ </div>
+ <div class="panel">
+  <h2 data-i="needsTitle">Your daily needs</h2>
+  <p class="muted" data-i="needsHelp">Buy essentials to keep all four bars above zero. If any bar reaches zero, your journey ends immediately.</p>
+  <div class="needs-grid" id="needsGrid"></div>
+ </div>
+ <div class="game-grid">
+  <div class="panel">
+   <div class="shop-heading"><h2 data-i="shopTitle">The Shopping Shop</h2><span class="wallet" id="shopWallet">₹50</span></div>
+   <p class="muted" data-i="shopHelp">Buy essentials first. Wants are fun, but your money is limited.</p>
+   <div class="shop-grid" id="shopGrid"></div>
+   <div class="offer" id="offerBox">
+    <div class="offer-label" data-i="dailyOffer">Today's special offer — check carefully!</div>
+    <h3 id="offerTitle"></h3><p id="offerText"></p><div class="offer-items" id="offerItems"></div>
+    <p><b data-i="offerQuestion">What will you do?</b></p>
+    <div class="actions"><button class="danger" id="acceptOffer" data-i="acceptOffer">Accept Offer</button><button class="success" id="rejectOffer" data-i="rejectOffer">Reject Offer</button></div>
+    <div class="feedback" id="offerFeedback" aria-live="polite"></div>
+   </div>
+   <div style="margin-top:15px"><button class="primary" id="finishDayBtn" disabled data-i="finishDay">Finish Day</button><p class="muted" id="finishHint" data-i="finishHint">Decide on today's offer first.</p><div class="feedback" id="dayFeedback"></div></div>
+  </div>
+  <div>
+   <div class="panel"><h2 data-i="cupboardTitle">My Cupboard</h2><p class="muted" data-i="cupboardHelp">Your purchased wants stay here. You cannot buy the same want twice.</p><div class="cupboard-grid" id="cupboardGrid"></div></div>
+   <div class="panel"><h2 data-i="tipsTitle">Money-smart tip</h2><p id="tipText"></p></div>
+   <div class="panel"><h2 data-i="journeyTitle">Your journey</h2><div id="journeyList"></div></div>
+   <button class="secondary" id="saveExitBtn" data-i="saveExit">Save & Exit</button>
+   <button class="secondary" id="resetBtn" data-i="reset">Reset Journey</button>
+  </div>
+ </div>
+</section>
+
+<section id="summaryScreen" class="screen">
+ <div class="panel welcome"><h2 data-i="dayComplete">Day Complete!</h2><p id="summaryText"></p><button class="primary" id="nextDayBtn" data-i="nextDay">Start Next Day</button></div>
+</section>
+
+<section id="finishScreen" class="screen">
+ <div class="panel welcome">
+  <h2 id="endHeading" data-i="finishedTitle">Journey Complete!</h2><p id="finalMessage"></p>
+  <div class="stat-grid">
+   <div class="stat"><small data-i="savedLabel">Total saved</small><strong id="finalSaved">₹0</strong></div>
+   <div class="stat"><small data-i="spentLabel">Total spent</small><strong id="finalSpent">₹0</strong></div>
+   <div class="stat"><small data-i="scoreLabel">Safety score</small><strong id="finalScore">0/7</strong></div>
+   <div class="stat"><small data-i="cupboardTitle">My Cupboard</small><strong id="finalWants">0</strong></div>
+  </div>
+  <p id="finalTip"></p><button class="primary" id="playAgainBtn" data-i="playAgain">Play Again</button>
+  <button class="secondary" id="homeBtn" data-i="home">Home</button>
+ </div>
+</section>
+</main>
+<footer>Suraksha Saathi • Learn safely through practice</footer>
+
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const SAVE_KEY="surakshaSaathiKidsJourneyV4";
+let language="en";
+
+const W={
+en:{
+brandSubtitle:"Learn to spend wisely. Stay safe. Save money.",
+welcomeTitle:"Your 7-Day Money Journey!",
+welcomeText:"You receive ₹50 each day. Buy needs, enjoy wants, spot risky shopping offers and try to save ₹200.",
+welcomeRule:"Every day has one shopping offer. Decide whether it is safe before finishing the day.",
+goalLabel:"Savings goal:",start:"Start Journey",resume:"Continue Journey",newGame:"Start a New Journey",
+walletLabel:"Money in wallet",savedLabel:"Total saved",spentLabel:"Total spent",scoreLabel:"Safety score",
+needsTitle:"Your daily needs",needsHelp:"Buy essentials to keep all four bars above zero. If any bar reaches zero, your journey ends immediately.",
+shopTitle:"The Shopping Shop",shopHelp:"Buy essentials first. Wants are fun, but your money is limited.",
+dailyOffer:"Today's special offer — check carefully!",offerQuestion:"What will you do?",acceptOffer:"Accept Offer",rejectOffer:"Reject Offer",
+finishDay:"Finish Day",finishHint:"Decide on today's offer first.",cupboardTitle:"My Cupboard",cupboardHelp:"Your purchased wants stay here. You cannot buy the same want twice.",
+tipsTitle:"Money-smart tip",journeyTitle:"Your journey",saveExit:"Save & Exit",reset:"Reset Journey",dayComplete:"Day Complete!",
+nextDay:"Start Next Day",finishedTitle:"Journey Complete!",playAgain:"Play Again",home:"Home",day:"Day",of:"of",
+wallet:"Wallet",hunger:"Hunger",thirst:"Thirst",energy:"Energy",cleanliness:"Cleanliness",essential:"Essential",want:"Want",buy:"Buy",owned:"Owned",
+food:"Food meal",water:"Water bottle",rest:"Rest break",soap:"Soap",storybook:"Storybook",football:"Football",toy:"Toy car",chocolate:"Chocolate",stickers:"Sticker pack",
+emptyCupboard:"Your cupboard is empty. Buy a want to put it here!",notEnough:"Not enough money! Choose something you can afford.",
+needAlready:"That need is already high. Try another item.",offerRight:"Correct choice!",offerWrong:"Not the safest choice.",
+offerSafe:"Good choice! You rejected the risky offer.",offerScam:"This was risky. In this practice game, you lost ₹10. Never share an OTP or UPI PIN to claim a reward.",
+offerGoodAccept:"This offer is genuine in the game! You received the advertised deal.",
+offerBadReject:"This deal was genuine in the game. You missed it, but it is okay to be cautious. Check the details first.",
+offerExplain:"Remember: never share an OTP, UPI PIN or password to claim a reward. Check unexpected offers before paying.",
+finishFirst:"Please decide on today's offer before finishing the day.",daySummary:"You finished the day with",
+daySummary2:"in your wallet. ₹50 will be added when the next day begins.",lastDay:"You completed all seven days!",
+savedGoal:"You reached your ₹200 savings goal!",missedGoal:"You did not reach ₹200 this time, but you practised useful money skills.",
+finalSafety:"Your safety score:",finalCupboard:"wants in your cupboard.",
+healthEnd:"You focused more on saving money or shopping for wants, but remember, needs are also important to keep ourselves healthy.",
+healthTitle:"Journey Ended — Take Care of Your Needs!",
+tip1:"Prioritise essentials before buying wants.",tip2:"A genuine cashback never requires your UPI PIN.",
+tip3:"A low price does not prove an offer is genuine.",tip4:"Never share an OTP with someone who calls or messages you.",
+tip5:"Check the total price before accepting a bundle deal.",tip6:"Urgent messages are designed to make you rush. Pause and verify.",
+tip7:"If unsure, ask a trusted adult before paying.",
+dayOffer1:"Special bundle deal!",dayOffer2:"You've won shopping cashback!",dayOffer3:"Limited-time discount!",
+dayOffer4:"Your refund is waiting!",dayOffer5:"Free gift with purchase!",dayOffer6:"Exclusive reward unlocked!",dayOffer7:"Final-day super saver!",
+offer1:"These two wants normally cost ₹45 together. Pay only ₹30 today! Would you buy this bundle?",
+offer2:"Type code 123ABC in this box to claim ₹20 cashback. The offer then asks you to share the OTP sent to your phone to release the reward.",
+offer3:"A football and a toy car normally cost ₹50 together. Today they cost ₹35. The shop shows the full price and asks for no private details.",
+offer4:"Your shopping refund of ₹20 is ready. Enter your UPI PIN to receive it immediately!",
+offer5:"Buy a storybook and receive a free chocolate. The price is clear, and no payment details or codes are requested.",
+offer6:"Your ₹25 reward is waiting! Share the OTP sent to your phone with our shopping helper to unlock it.",
+offer7:"Last chance! Buy two wants worth ₹50 for ₹30. To reserve this discount, enter your UPI PIN below!",
+offer1Items:"Storybook ₹25 + Chocolate ₹20 = ₹45",offer2Items:"Type 123ABC, then share an OTP to claim ₹20",
+offer3Items:"Football + Toy car: ₹50 → ₹35",offer4Items:"Claim a ₹20 refund",
+offer5Items:"Storybook + free chocolate",offer6Items:"Share an OTP to unlock ₹25",offer7Items:"₹50 of items for ₹30 — asks for UPI PIN",
+safe0:false,safe1:false,safe2:true,safe3:false,safe4:true,safe5:false,safe6:false,
+end1:"Journey Complete!",end2:"Journey Ended"
+},
+hi:{
+brandSubtitle:"समझदारी से खर्च करें। सुरक्षित रहें। पैसे बचाएँ।",
+welcomeTitle:"आपकी 7 दिन की पैसों की यात्रा!",
+welcomeText:"आपको हर दिन ₹50 मिलते हैं। ज़रूरतें पूरी करें, पसंद की चीज़ें खरीदें, जोखिम भरे ऑफ़र पहचानें और ₹200 बचाने की कोशिश करें।",
+welcomeRule:"हर दिन खरीदारी से जुड़ा एक ऑफ़र आएगा। दिन पूरा करने से पहले फैसला करें कि वह सुरक्षित है या नहीं।",
+goalLabel:"बचत का लक्ष्य:",start:"यात्रा शुरू करें",resume:"यात्रा जारी रखें",newGame:"नई यात्रा शुरू करें",
+walletLabel:"बटुए में पैसे",savedLabel:"कुल बचत",spentLabel:"कुल खर्च",scoreLabel:"सुरक्षा स्कोर",
+needsTitle:"आपकी रोज़ की ज़रूरतें",needsHelp:"ज़रूरी चीज़ें खरीदकर चारों बार को शून्य से ऊपर रखें। कोई बार शून्य पर पहुँचा तो यात्रा तुरंत समाप्त होगी।",
+shopTitle:"खरीदारी की दुकान",shopHelp:"पहले ज़रूरी चीज़ें खरीदें। पसंद की चीज़ें अच्छी हैं, लेकिन पैसे सीमित हैं।",
+dailyOffer:"आज का खास ऑफ़र — ध्यान से जाँचें!",offerQuestion:"आप क्या करेंगे?",acceptOffer:"ऑफ़र स्वीकारें",rejectOffer:"ऑफ़र ठुकराएँ",
+finishDay:"दिन पूरा करें",finishHint:"पहले आज के ऑफ़र पर फैसला करें।",cupboardTitle:"मेरी अलमारी",cupboardHelp:"आपकी खरीदी हुई पसंद की चीज़ें यहाँ रहेंगी। एक ही चीज़ दो बार नहीं खरीद सकते।",
+tipsTitle:"पैसों की समझदारी",journeyTitle:"आपकी यात्रा",saveExit:"सेव करके बाहर जाएँ",reset:"यात्रा रीसेट करें",dayComplete:"दिन पूरा हुआ!",
+nextDay:"अगला दिन शुरू करें",finishedTitle:"यात्रा पूरी हुई!",playAgain:"फिर खेलें",home:"होम",day:"दिन",of:"में से",
+wallet:"बटुआ",hunger:"भूख",thirst:"प्यास",energy:"ऊर्जा",cleanliness:"सफ़ाई",essential:"ज़रूरत",want:"पसंद",buy:"खरीदें",owned:"खरीद लिया",
+food:"खाना",water:"पानी की बोतल",rest:"आराम का समय",soap:"साबुन",storybook:"कहानी की किताब",football:"फ़ुटबॉल",toy:"खिलौना कार",chocolate:"चॉकलेट",stickers:"स्टिकर पैक",
+emptyCupboard:"आपकी अलमारी खाली है। कोई पसंद की चीज़ खरीदें!",notEnough:"पैसे कम हैं! ऐसी चीज़ चुनें जिसे आप खरीद सकें।",
+needAlready:"अभी इस ज़रूरत का स्तर पर्याप्त है। कोई दूसरी चीज़ चुनें।",offerRight:"सही फैसला!",offerWrong:"यह सबसे सुरक्षित फैसला नहीं था।",
+offerSafe:"अच्छा फैसला! आपने जोखिम भरा ऑफ़र ठुकराया।",offerScam:"यह जोखिम भरा था। अभ्यास में आपके ₹10 कम हुए। इनाम पाने के लिए कभी OTP या UPI PIN साझा न करें।",
+offerGoodAccept:"इस खेल में यह असली ऑफ़र था! आपको बताई गई डील मिली।",
+offerBadReject:"इस खेल में यह सही डील थी। आपने इसे छोड़ दिया, लेकिन सावधान रहना ठीक है। पहले विवरण जाँचें।",
+offerExplain:"याद रखें: इनाम पाने के लिए OTP, UPI PIN या पासवर्ड साझा न करें। अनजान ऑफ़र को पहले जाँचें।",
+finishFirst:"दिन पूरा करने से पहले आज के ऑफ़र पर फैसला करें।",daySummary:"दिन के अंत में आपके पास",
+daySummary2:"बचे। अगले दिन शुरू होने पर ₹50 और मिलेंगे।",lastDay:"आपने सातों दिन पूरे कर लिए!",
+savedGoal:"आपने ₹200 की बचत का लक्ष्य पूरा किया!",missedGoal:"इस बार ₹200 नहीं बच पाए, लेकिन आपने पैसों के बारे में उपयोगी बातें सीखीं।",
+finalSafety:"आपका सुरक्षा स्कोर:",finalCupboard:"चीज़ें आपकी अलमारी में हैं।",
+healthEnd:"आपने पैसे बचाने या पसंद की चीज़ें खरीदने पर ज़्यादा ध्यान दिया, लेकिन याद रखें, स्वस्थ रहने के लिए ज़रूरतें पूरी करना भी ज़रूरी है।",
+healthTitle:"यात्रा समाप्त — अपनी ज़रूरतों का ध्यान रखें!",
+tip1:"पसंद की चीज़ों से पहले ज़रूरतें पूरी करें।",tip2:"असली कैशबैक के लिए UPI PIN नहीं चाहिए।",
+tip3:"कम कीमत होने का मतलब यह नहीं कि ऑफ़र असली है।",tip4:"कॉल या संदेश करने वाले किसी व्यक्ति को OTP न बताएँ।",
+tip5:"बंडल ऑफ़र लेने से पहले कुल कीमत जाँचें।",tip6:"जल्दी करने वाले संदेश आपको जल्दबाज़ी में डालते हैं। रुकें और जाँचें।",
+tip7:"संदेह हो तो भुगतान से पहले किसी भरोसेमंद बड़े से पूछें।",
+dayOffer1:"खास बंडल डील!",dayOffer2:"आपने कैशबैक जीता है!",dayOffer3:"सीमित समय की छूट!",
+dayOffer4:"आपका रिफंड तैयार है!",dayOffer5:"खरीदारी के साथ मुफ़्त उपहार!",dayOffer6:"खास इनाम मिला!",dayOffer7:"आखिरी दिन की बचत!",
+offer1:"इन दोनों चीज़ों की कीमत ₹45 है। आज सिर्फ ₹30 दें! क्या आप यह बंडल खरीदेंगे?",
+offer2:"₹20 कैशबैक पाने के लिए 123ABC लिखें। फिर इनाम पाने के लिए आपसे फ़ोन पर आया OTP साझा करने को कहा जाता है।",
+offer3:"फ़ुटबॉल और खिलौना कार की कीमत ₹50 है। आज दोनों ₹35 में हैं। कीमत साफ़ है और कोई निजी जानकारी नहीं माँगी जाती।",
+offer4:"आपका ₹20 रिफंड तैयार है। इसे तुरंत पाने के लिए अपना UPI PIN डालें!",
+offer5:"कहानी की किताब खरीदें और मुफ़्त चॉकलेट पाएँ। कीमत साफ़ है और कोई निजी जानकारी या कोड नहीं माँगा जाता।",
+offer6:"आपका ₹25 इनाम तैयार है! इसे पाने के लिए अपने फ़ोन पर आया OTP हमारे शॉपिंग सहायक को बताएँ।",
+offer7:"आखिरी मौका! ₹50 की दो चीज़ें सिर्फ ₹30 में। छूट पक्की करने के लिए नीचे अपना UPI PIN डालें!",
+offer1Items:"कहानी की किताब ₹25 + चॉकलेट ₹20 = ₹45",offer2Items:"123ABC लिखें, फिर ₹20 के लिए OTP साझा करें",
+offer3Items:"फ़ुटबॉल + खिलौना कार: ₹50 → ₹35",offer4Items:"₹20 रिफंड पाएँ",
+offer5Items:"कहानी की किताब + मुफ़्त चॉकलेट",offer6Items:"₹25 पाने के लिए OTP साझा करें",offer7Items:"₹50 की चीज़ें ₹30 में — UPI PIN माँगता है",
+safe0:false,safe1:false,safe2:true,safe3:false,safe4:true,safe5:false,safe6:false,
+end1:"यात्रा पूरी हुई!",end2:"यात्रा समाप्त"
+}
+};
+const t=k=>W[language][k]??W.en[k]??k;
+const cash=n=>"₹"+Math.max(0,Math.round(n));
+
+const ITEMS=[
+{id:"food",type:"essential",price:20,art:"food",gain:{hunger:38}},
+{id:"water",type:"essential",price:10,art:"water",gain:{thirst:42}},
+{id:"rest",type:"essential",price:10,art:"rest",gain:{energy:38}},
+{id:"soap",type:"essential",price:10,art:"soap",gain:{cleanliness:42}},
+{id:"storybook",type:"want",price:25,art:"book"},
+{id:"football",type:"want",price:30,art:"ball"},
+{id:"toy",type:"want",price:20,art:"car"},
+{id:"chocolate",type:"want",price:20,art:"chocolate"},
+{id:"stickers",type:"want",price:15,art:"stickers"}
+];
+const OFFERS=[
+{title:"dayOffer1",text:"offer1",items:"offer1Items",safe:false,loss:10},
+{title:"dayOffer2",text:"offer2",items:"offer2Items",safe:false,loss:10},
+{title:"dayOffer3",text:"offer3",items:"offer3Items",safe:true},
+{title:"dayOffer4",text:"offer4",items:"offer4Items",safe:false,loss:10},
+{title:"dayOffer5",text:"offer5",items:"offer5Items",safe:true},
+{title:"dayOffer6",text:"offer6",items:"offer6Items",safe:false,loss:10},
+{title:"dayOffer7",text:"offer7",items:"offer7Items",safe:false,loss:10}
+];
+const TIPS=["tip1","tip2","tip3","tip4","tip5","tip6","tip7"];
+
+function fresh(){return{day:1,money:50,saved:0,spent:0,score:0,started:false,
+needs:{hunger:70,thirst:70,energy:70,cleanliness:70},cupboard:[],decisions:[],
+dayDone:false,offerAnswered:false,ended:false,endReason:"",daySpent:0};}
+let state=fresh();
+
+function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(state));}catch(e){}}
+function load(){try{
+ const x=JSON.parse(localStorage.getItem(SAVE_KEY));
+ if(!x||!x.needs||!Number.isFinite(x.day))return false;
+ state=Object.assign(fresh(),x);
+ state.needs=Object.assign(fresh().needs,x.needs);
+ state.cupboard=Array.isArray(x.cupboard)?x.cupboard:[];
+ state.decisions=Array.isArray(x.decisions)?x.decisions:[];
+ return true;
+}catch(e){return false;}}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function screen(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");window.scrollTo(0,0);}
+
+function art(k){
+const drawings={
+food:`<ellipse cx="70" cy="86" rx="40" ry="6" fill="#dce8f3"/><ellipse cx="70" cy="63" rx="40" ry="17" fill="#e9eef5" stroke="#a8bbce" stroke-width="2"/><ellipse cx="70" cy="57" rx="32" ry="12" fill="white"/><path d="M43 57Q49 35 70 44Q88 31 99 56Z" fill="#6abf69"/><circle cx="58" cy="52" r="5" fill="#ed6a50"/><circle cx="77" cy="49" r="5" fill="#f3c64e"/><circle cx="88" cy="56" r="4" fill="#d96e55"/>`,
+water:`<ellipse cx="70" cy="93" rx="25" ry="5" fill="#dce8f3"/><path d="M53 25H87L91 36V83Q91 91 83 91H57Q49 91 49 83V36Z" fill="#83d6f2" stroke="#278bb7" stroke-width="2"/><rect x="59" y="15" width="22" height="13" rx="3" fill="#2878d0"/><path d="M70 46C59 59 62 66 70 66S81 58 70 46Z" fill="#49b8e7"/>`,
+rest:`<ellipse cx="70" cy="89" rx="38" ry="6" fill="#dce8f3"/><rect x="27" y="48" width="86" height="29" rx="7" fill="#8fc6ef"/><rect x="31" y="40" width="30" height="22" rx="7" fill="#f7d8a6"/><rect x="65" y="44" width="44" height="27" rx="5" fill="#5f9bd4"/><path d="M34 77V86M105 77V86" stroke="#667e98" stroke-width="4" stroke-linecap="round"/><path d="M49 32q5-6 10 0m10-7q5-6 10 0m10 6q5-6 10 0" stroke="#f0b34b" stroke-width="3" fill="none"/>`,
+soap:`<ellipse cx="70" cy="91" rx="31" ry="5" fill="#dce8f3"/><rect x="42" y="28" width="56" height="57" rx="13" fill="#78d7c6" stroke="#299e91" stroke-width="2"/><path d="M49 39q21-8 42 0" stroke="#c5f7ed" stroke-width="5" fill="none"/><rect x="48" y="50" width="44" height="21" rx="5" fill="white"/><path d="M57 60q13-8 26 0" stroke="#39a995" stroke-width="3" fill="none"/>`,
+book:`<ellipse cx="70" cy="91" rx="35" ry="5" fill="#dce8f3"/><path d="M27 25q22-7 41 4v54q-20-11-41-3Z" fill="#ee7668" stroke="#b64c45" stroke-width="2"/><path d="M68 29q21-11 44-4v55q-24-8-44 3Z" fill="#4f9fdb" stroke="#286ba9" stroke-width="2"/><path d="M68 29v54" stroke="white" stroke-width="3"/><path d="M36 38q13-4 23 2m-23 7q13-4 23 2m19-11q13-6 24-1m-24 10q13-6 24-1" stroke="white" stroke-width="2" fill="none"/>`,
+ball:`<ellipse cx="70" cy="91" rx="32" ry="5" fill="#dce8f3"/><circle cx="70" cy="55" r="31" fill="#f5c94d" stroke="#d59d26" stroke-width="2"/><path d="M70 38l13 9-5 15H62l-5-15Z" fill="#243d62"/><path d="M70 24V12m27 27 11-6M98 71l12 6M42 71l-12 7M43 39l-12-7M57 47L43 40m40 7 14-8M78 62l20 9M62 62 42 71" stroke="#243d62" stroke-width="3" fill="none"/>`,
+car:`<ellipse cx="70" cy="86" rx="42" ry="6" fill="#dce8f3"/><path d="M27 62l8-17q3-6 12-6h38q7 1 13 12l13 9q5 2 5 9v7H25v-9Z" fill="#ee785c" stroke="#b84f3b" stroke-width="2"/><path d="M43 43h15v13H37Zm21 0h19q5 1 11 13H64Z" fill="#c7effb" stroke="#b84f3b" stroke-width="2"/><circle cx="44" cy="76" r="10" fill="#304154"/><circle cx="44" cy="76" r="4" fill="#d7e4ef"/><circle cx="95" cy="76" r="10" fill="#304154"/><circle cx="95" cy="76" r="4" fill="#d7e4ef"/>`,
+chocolate:`<ellipse cx="70" cy="88" rx="32" ry="5" fill="#dce8f3"/><path d="M42 26h50l11 11v41H42Z" fill="#7a4b38" stroke="#583222" stroke-width="2"/><path d="M42 26l11-9h50l-11 9Z" fill="#b27b5b"/><rect x="49" y="37" width="43" height="28" rx="3" fill="#f8d875"/><path d="M55 44h31m-31 7h31m-31 7h22" stroke="#99623a" stroke-width="2"/>`,
+stickers:`<ellipse cx="70" cy="89" rx="34" ry="5" fill="#dce8f3"/><rect x="35" y="18" width="70" height="65" rx="5" fill="white" stroke="#9bb6d3" stroke-width="2"/><circle cx="54" cy="38" r="11" fill="#ffbd55"/><path d="M53 29l4 7h7l-6 5 2 7-7-4-6 4 2-7-5-5h7Z" fill="white"/><circle cx="84" cy="36" r="10" fill="#f17a82"/><path d="M79 36l4 4 7-9" stroke="white" stroke-width="3" fill="none"/><path d="M47 65q10-14 20 0 10-14 20 0L67 77Z" fill="#6bbd8b"/><circle cx="89" cy="72" r="6" fill="#6a9ee8"/>`
+};
+return `<svg viewBox="0 0 140 110" role="img" aria-label="Illustrated item" xmlns="http://www.w3.org/2000/svg">${drawings[k]||drawings.book}</svg>`;
+}
+
+function renderStats(){
+$("wallet").textContent=t("wallet")+": "+cash(state.money);$("shopWallet").textContent=cash(state.money);
+$("walletStat").textContent=cash(state.money);$("savedStat").textContent=cash(state.saved);$("spentStat").textContent=cash(state.spent);
+$("scoreStat").textContent=state.score+"/7";$("goalBar").style.width=Math.min(100,state.saved/200*100)+"%";
+$("goalProgress").textContent=cash(state.saved)+" / ₹200";$("dayHeading").textContent=t("day")+" "+state.day+" "+t("of")+" 7";
+}
+function renderNeeds(){
+$("needsGrid").innerHTML=Object.keys(state.needs).map(key=>{
+const val=Math.max(0,Math.min(100,state.needs[key])),color=val<30?"#d84c4c":val<55?"#f2a23a":"#159b91";
+return `<div class="need"><b>${esc(t(key))}</b><div class="track"><div class="fill" style="width:${val}%;background:${color}"></div></div><small>${val}/100</small></div>`;
+}).join("");
+}
+function renderShop(){
+$("shopGrid").innerHTML=ITEMS.map(item=>{
+const owned=item.type==="want"&&state.cupboard.includes(item.id);
+const disabled=state.money<item.price||state.dayDone||state.ended||owned;
+return `<div class="item"><div class="art">${art(item.art)}</div><span class="tag ${item.type==="want"?"want-tag":""}">${esc(t(item.type))}</span><h4>${esc(t(item.id))}</h4><div class="price">${cash(item.price)}</div><button class="${item.type==="want"?"gold":"primary"}" data-buy="${item.id}" ${disabled?"disabled":""}>${esc(t(owned?"owned":"buy"))}</button></div>`;
+}).join("");
+document.querySelectorAll("[data-buy]").forEach(b=>b.addEventListener("click",()=>buy(b.dataset.buy)));
+}
+function renderCupboard(){
+const wants=state.cupboard.map(id=>ITEMS.find(x=>x.id===id)).filter(Boolean);
+$("cupboardGrid").innerHTML=wants.length?wants.map(i=>`<div class="cupboard-item"><div class="art">${art(i.art)}</div><strong>${esc(t(i.id))}</strong></div>`).join(""):`<div style="grid-column:1/-1;text-align:center;padding:15px;color:#65758a">${esc(t("emptyCupboard"))}</div>`;
+}
+function renderOffer(){
+const o=OFFERS[state.day-1];if(!o)return;
+$("offerTitle").textContent=t(o.title);$("offerText").textContent=t(o.text);$("offerItems").textContent=t(o.items);
+$("acceptOffer").disabled=state.offerAnswered||state.dayDone||state.ended;
+$("rejectOffer").disabled=state.offerAnswered||state.dayDone||state.ended;
+$("finishDayBtn").disabled=!state.offerAnswered||state.dayDone||state.ended;
+const d=state.decisions[state.day-1];
+if(state.offerAnswered&&d){
+$("offerFeedback").className="feedback show "+(d.correct?"good":"bad");$("offerFeedback").textContent=d.message;
+$("finishHint").textContent="";
+}else{$("offerFeedback").className="feedback";$("offerFeedback").textContent="";$("finishHint").textContent=t("finishHint");}
+}
+function renderJourney(){
+$("journeyList").innerHTML=Array.from({length:7},(_,i)=>{
+const d=i+1,decision=state.decisions[i];let mark=d<state.day?"✓":d===state.day?"▶":"○";
+if(decision)mark=decision.correct?"✓":"•";
+return `<div style="padding:8px 2px;border-bottom:1px solid #e7edf5">${mark} &nbsp; ${esc(t("day"))} ${d}</div>`;
+}).join("");
+}
+function render(){
+document.documentElement.lang=language;
+document.querySelectorAll("[data-i]").forEach(el=>{el.textContent=t(el.dataset.i);});
+$("brandTitle").textContent=language==="hi"?"सुरक्षा साथी किड्स":"Suraksha Saathi Kids";
+$("brandSubtitle").textContent=t("brandSubtitle");
+$("resumeBtn").hidden=!state.started;$("newGameBtn").hidden=!state.started;
+if(!state.started){screen("welcomeScreen");return;}
+if(state.ended){showEnd();return;}
+if(state.day>7){showEnd();return;}
+renderStats();renderNeeds();renderShop();renderCupboard();renderOffer();renderJourney();
+$("tipText").textContent=t(TIPS[(state.day-1)%TIPS.length]);
+screen("gameScreen");save();
+}
+function buy(id){
+if(state.dayDone||state.ended)return;
+const item=ITEMS.find(x=>x.id===id);if(!item)return;
+if(state.money<item.price){alert(t("notEnough"));return;}
+if(item.type==="want"&&state.cupboard.includes(id))return;
+if(item.gain){const key=Object.keys(item.gain)[0];if(state.needs[key]>=90){alert(t("needAlready"));return;}}
+state.money-=item.price;state.spent+=item.price;
+if(item.type==="want")state.cupboard.push(id);
+if(item.gain)Object.entries(item.gain).forEach(([key,v])=>state.needs[key]=Math.min(100,state.needs[key]+v));
+save();renderStats();renderNeeds();renderShop();renderCupboard();
+}
+function decide(accept){
+if(state.offerAnswered||state.dayDone||state.ended)return;
+const o=OFFERS[state.day-1],correct=accept===o.safe;
+let message;
+if(correct){
+state.score++;
+message=t("offerRight")+" "+(accept?t("offerGoodAccept"):t("offerSafe"));
+}else{
+if(accept&&o.loss){const loss=Math.min(state.money,o.loss);state.money-=loss;state.spent+=loss;}
+message=t("offerWrong")+" "+(accept?t("offerScam"):t("offerBadReject"));
+}
+message+=" "+t("offerExplain");
+state.offerAnswered=true;state.decisions[state.day-1]={accept,correct,message};
+save();renderStats();renderOffer();renderShop();
+}
+function endJourney(reason){
+state.ended=true;state.endReason=reason;save();showEnd();
+}
+function checkHealth(){
+return Object.values(state.needs).some(v=>v<=0);
+}
+function finishDay(){
+if(!state.offerAnswered){alert(t("finishFirst"));return;}
+if(state.dayDone||state.ended)return;
+state.dayDone=true;
+/* Needs decrease by 15 points on odd-numbered days,
+   and 20 points on even-numbered days. */
+const decrease=state.day%2===1?15:20;
+Object.keys(state.needs).forEach(key=>state.needs[key]=Math.max(0,state.needs[key]-decrease));
+save();
+if(checkHealth()){endJourney("health");return;}
+$("summaryText").textContent=t("daySummary")+" "+cash(state.money)+" "+t("daySummary2");
+$("nextDayBtn").textContent=state.day===7?t("finishedTitle"):t("nextDay");
+screen("summaryScreen");
+}
+function nextDay(){
+if(state.day>=7){state.day=8;save();endJourney("complete");return;}
+state.day++;state.money+=50;state.offerAnswered=false;state.dayDone=false;state.daySpent=0;save();render();
+}
+function showEnd(){
+screen("finishScreen");
+$("endHeading").textContent=state.endReason==="health"?t("healthTitle"):t("finishedTitle");
+$("finalSaved").textContent=cash(state.saved);$("finalSpent").textContent=cash(state.spent);
+$("finalScore").textContent=state.score+"/7";$("finalWants").textContent=state.cupboard.length;
+if(state.endReason==="health"){
+$("finalMessage").textContent=t("healthEnd");
+}else{
+$("finalMessage").textContent=state.saved>=200?t("savedGoal"):t("missedGoal");
+}
+$("finalTip").textContent=t("finalSafety")+" "+state.score+"/7. "+state.cupboard.length+" "+t("finalCupboard");
+}
+function reset(){
+if(!confirm(language==="hi"?"क्या आप पूरी यात्रा रीसेट करना चाहते हैं?":"Reset your entire journey? Saved progress will be lost."))return;
+state=fresh();save();render();
+}
+function setLanguage(lang){language=lang==="hi"?"hi":"en";render();}
+
+$("language").addEventListener("change",e=>setLanguage(e.target.value));
+$("startBtn").addEventListener("click",()=>{state=fresh();state.started=true;save();render();});
+$("resumeBtn").addEventListener("click",()=>{state.started=true;render();});
+$("newGameBtn").addEventListener("click",reset);
+$("acceptOffer").addEventListener("click",()=>decide(true));
+$("rejectOffer").addEventListener("click",()=>decide(false));
+$("finishDayBtn").addEventListener("click",finishDay);
+$("nextDayBtn").addEventListener("click",nextDay);
+$("saveExitBtn").addEventListener("click",()=>{save();state.started=false;render();});
+$("resetBtn").addEventListener("click",reset);
+$("playAgainBtn").addEventListener("click",()=>{state=fresh();state.started=true;save();render();});
+$("homeBtn").addEventListener("click",()=>{state.started=false;save();render();});
+
+if(load()){$("resumeBtn").hidden=false;$("newGameBtn").hidden=false;}
+render();
+</script>
+</body>
+</html>

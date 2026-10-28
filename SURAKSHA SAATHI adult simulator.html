@@ -1,0 +1,1097 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>सुरक्षा साथी | डिजिटल सुरक्षा अभ्यास</title>
+
+<style>
+:root {
+  --blue: #1769aa;
+  --dark-blue: #104b7b;
+  --green: #13866d;
+  --light-blue: #eaf5ff;
+  --text: #233447;
+  --muted: #637488;
+  --border: #dce6ef;
+  --success: #137547;
+  --danger: #b83232;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #f3f7fb;
+  color: var(--text);
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 15px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  display: block;
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 23px;
+  line-height: 1.3;
+  color: #174f7b;
+}
+
+.brand p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 17px;
+  font-weight: 650;
+  transition: background .18s, transform .18s;
+}
+
+button:hover:not(:disabled) { transform: translateY(-1px); }
+button:disabled { cursor: not-allowed; opacity: .52; }
+
+.home-button {
+  color: #17527f;
+  background: #eaf4fc;
+  white-space: nowrap;
+}
+
+.hero {
+  margin: 26px auto 18px;
+  width: min(1100px, 92%);
+  padding: 28px;
+  color: #fff;
+  border-radius: 17px;
+  background: linear-gradient(120deg, #1769aa, #12866e);
+  box-shadow: 0 8px 22px #123d5c14;
+}
+
+.hero h2 {
+  margin: 0 0 7px;
+  font-size: clamp(23px, 4vw, 32px);
+}
+
+.hero p { margin: 0; max-width: 760px; }
+
+.reminder {
+  width: min(1100px, 92%);
+  margin: 0 auto 20px;
+  padding: 13px 17px;
+  border: 1px solid #f2d36a;
+  border-radius: 10px;
+  background: #fff8d9;
+  color: #705718;
+}
+
+main {
+  width: min(1100px, 92%);
+  margin: 0 auto 32px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 19px;
+}
+
+.stat-card {
+  background: #fff;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.stat-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 25px;
+  margin-top: 4px;
+  color: #175b91;
+}
+
+.progress-area { margin-bottom: 18px; }
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 7px;
+  color: #506479;
+  font-size: 14px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 9px;
+  background: #dce7f0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #1769aa, #18a27e);
+  border-radius: 20px;
+  transition: width .25s;
+}
+
+.scenario-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: clamp(18px, 4vw, 30px);
+  box-shadow: 0 5px 20px #123d5c0b;
+}
+
+.scenario-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.category {
+  display: inline-block;
+  color: #155e8c;
+  background: #e8f4ff;
+  border-radius: 30px;
+  padding: 5px 11px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.scenario-number {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.scenario-card h3 {
+  font-size: clamp(21px, 3vw, 27px);
+  margin: 8px 0 12px;
+  line-height: 1.35;
+}
+
+.call-box {
+  border: 1px solid #cfe2f2;
+  background: #f3f9ff;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 15px 0 19px;
+}
+
+.call-label {
+  color: #185f91;
+  font-size: 13px;
+  font-weight: 750;
+  margin-bottom: 7px;
+}
+
+.call-dialogue {
+  margin: 0;
+  font-size: 16px;
+  white-space: pre-line;
+}
+
+.question {
+  font-weight: 750;
+  font-size: 18px;
+  margin: 18px 0 12px;
+}
+
+.options {
+  display: grid;
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 13px 15px;
+  background: #fff;
+  border: 1px solid #d5e0ea;
+  border-radius: 10px;
+  text-align: left;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.option:hover:not(:disabled) {
+  border-color: #6da8d6;
+  background: #f6fbff;
+}
+
+.option .letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  background: #eaf2f8;
+  border-radius: 50%;
+  color: #215a83;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.option.correct {
+  border-color: #68b98c;
+  background: #effaf3;
+}
+
+.option.correct .letter {
+  color: #fff;
+  background: var(--success);
+}
+
+.option.incorrect {
+  border-color: #e7a1a1;
+  background: #fff3f3;
+}
+
+.option.incorrect .letter {
+  color: #fff;
+  background: var(--danger);
+}
+
+.audio-status {
+  margin-top: 17px;
+  padding: 11px 13px;
+  border-radius: 9px;
+  background: #f0f5f9;
+  color: #40586d;
+  font-size: 14px;
+}
+
+.audio-status.warning {
+  color: #7b4a00;
+  background: #fff5dc;
+  border: 1px solid #f0d18b;
+}
+
+.feedback {
+  display: none;
+  margin-top: 19px;
+  border-radius: 12px;
+  padding: 17px;
+  border: 1px solid #cfe4d7;
+  background: #f1faf4;
+}
+
+.feedback.show { display: block; }
+
+.feedback h4 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  color: var(--success);
+}
+
+.feedback.wrong {
+  background: #fff7ed;
+  border-color: #f2d5b3;
+}
+
+.feedback.wrong h4 { color: #9a570e; }
+.feedback p { margin: 6px 0; }
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.primary-button {
+  color: #fff;
+  background: var(--blue);
+}
+
+.primary-button:hover:not(:disabled) { background: var(--dark-blue); }
+
+.secondary-button {
+  color: #185b88;
+  background: #eaf4fc;
+}
+
+.end-screen {
+  display: none;
+  text-align: center;
+  padding: 28px 12px;
+}
+
+.end-screen.show { display: block; }
+
+.end-screen h3 {
+  font-size: 27px;
+  color: #175b91;
+  margin-bottom: 7px;
+}
+
+.final-score {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--green);
+  margin: 14px 0;
+}
+
+footer {
+  text-align: center;
+  color: #718195;
+  padding: 22px 12px 30px;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  header { padding: 12px 4%; }
+  .brand h1 { font-size: 20px; }
+  .brand p { font-size: 11px; }
+  .logo { width: 46px; height: 46px; }
+  .home-button { padding: 9px 11px; font-size: 13px; }
+  .hero { padding: 22px; }
+  .stats { gap: 8px; }
+  .stat-card { padding: 12px 10px; }
+  .stat-card span { font-size: 11px; }
+  .stat-card strong { font-size: 21px; }
+  .scenario-card { padding: 17px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="brand">
+    <img class="logo" src="suraksha-saathi-logo.png"
+         alt="सुरक्षा साथी का मूल लोगो">
+    <div>
+      <h1>सुरक्षा साथी</h1>
+      <p>बड़ों के लिए डिजिटल सुरक्षा अभ्यास</p>
+    </div>
+  </div>
+  <button class="home-button" id="homeButton">⌂ होम</button>
+</header>
+
+<section class="hero">
+  <h2>धोखाधड़ी को पहचानना सीखें</h2>
+  <p>असली ज़िंदगी जैसी डिजिटल धोखाधड़ी की स्थितियों का अभ्यास करें और सीखें कि सुरक्षित कदम कैसे उठाना है।</p>
+</section>
+
+<div class="reminder">
+  <strong>याद रखें:</strong> जल्दबाज़ी न करें। OTP, UPI PIN या बैंक की गोपनीय जानकारी किसी के साथ साझा न करें।
+</div>
+
+<main>
+  <div class="stats">
+    <div class="stat-card">
+      <span>कुल परिस्थितियाँ</span>
+      <strong id="totalStat">8</strong>
+    </div>
+    <div class="stat-card">
+      <span>सही जवाब</span>
+      <strong id="correctStat">0</strong>
+    </div>
+    <div class="stat-card">
+      <span>स्कोर</span>
+      <strong id="scoreStat">0%</strong>
+    </div>
+  </div>
+
+  <div class="progress-area">
+    <div class="progress-label">
+      <span>आपकी प्रगति</span>
+      <span id="progressText">शुरू करने के लिए तैयार</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <section class="scenario-card" id="scenarioCard">
+    <div id="scenarioContent">
+      <div class="scenario-top">
+        <span class="category">सुरक्षित अभ्यास</span>
+        <span class="scenario-number">ऑडियो अभ्यास</span>
+      </div>
+      <h3>क्या आप धोखाधड़ी पहचान सकते हैं?</h3>
+      <p>इस अभ्यास में आपको फोन कॉल और ऑनलाइन संदेशों जैसी परिस्थितियाँ मिलेंगी। हर परिस्थिति में सुरक्षित विकल्प चुनें।</p>
+
+      <div class="call-box">
+        <div class="call-label">📞 अभ्यास कैसे काम करेगा</div>
+        <p class="call-dialogue">शुरू करने पर घंटी बजेगी और कॉल करने वाले की बात अपने-आप सुनाई देगी। जवाब देने के बाद सही कदम की व्याख्या भी आवाज़ में सुनाई जाएगी।</p>
+      </div>
+
+      <div class="audio-status" id="audioStatus" role="status" aria-live="polite">
+        ऑडियो शुरू करने के लिए नीचे दिए गए बटन पर एक बार क्लिक करें।
+      </div>
+
+      <div class="controls">
+        <span style="color:#637488;font-size:13px;">8 परिस्थितियाँ · हिंदी ऑडियो</span>
+        <button class="primary-button" id="startButton">▶ अभ्यास शुरू करें</button>
+      </div>
+    </div>
+
+    <div class="end-screen" id="endScreen">
+      <h3>अभ्यास पूरा हुआ!</h3>
+      <p>आपने सभी परिस्थितियों का अभ्यास कर लिया। अपनी गलतियों से सीखें और असली जीवन में सतर्क रहें।</p>
+      <div class="final-score" id="finalScore">0 / 8</div>
+      <p id="finalMessage"></p>
+      <div class="controls" style="justify-content:center;">
+        <button class="primary-button" id="retryButton">फिर से अभ्यास करें</button>
+        <button class="secondary-button" id="endHomeButton">होम पेज पर जाएँ</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  सुरक्षा साथी · डिजिटल जागरूकता और सुरक्षित ऑनलाइन व्यवहार का अभ्यास
+</footer>
+
+<script>
+"use strict";
+
+const scenarios = [
+  {
+    category: "फर्जी पुलिस कॉल",
+    title: "वीडियो कॉल पर डिजिटल अरेस्ट की धमकी",
+    gender: "male",
+    dialogue: "मैं पुलिस विभाग से बोल रहा हूँ। आपके आधार कार्ड का इस्तेमाल एक अपराध में हुआ है। आपको अभी वीडियो कॉल पर रहना होगा और किसी को फोन नहीं करना है। मामला खत्म करने के लिए पैसे ट्रांसफर करने होंगे।",
+    question: "आपको सबसे सुरक्षित कदम क्या उठाना चाहिए?",
+    options: [
+      "कॉलर की बात मानकर पैसे ट्रांसफर कर देना",
+      "कॉल काटना और पुलिस या संबंधित विभाग से आधिकारिक नंबर पर खुद संपर्क करना",
+      "अपना आधार नंबर और बैंक की जानकारी देकर अपनी पहचान साबित करना"
+    ],
+    correct: 1,
+    explanation: "बिल्कुल सही! आपने दबाव डालकर पैसे माँगने के संकेत को पहचाना।",
+    lesson: "डिजिटल अरेस्ट के नाम पर वीडियो कॉल में पैसे माँगना एक आम धोखाधड़ी का तरीका है। कॉल काटें और आधिकारिक माध्यम से पुष्टि करें।"
+  },
+  {
+    category: "AI आवाज़ की नकल",
+    title: "परिचित की आवाज़ में पैसों की माँग",
+    gender: "female",
+    dialogue: "हैलो, मैं मुसीबत में हूँ। मेरा फोन ठीक से काम नहीं कर रहा। मुझे अभी तुरंत पैसे भेज दो। किसी को बताना मत, मैं बाद में सब समझा दूँगी।",
+    question: "आवाज़ किसी परिचित जैसी लगे, तब भी क्या करना चाहिए?",
+    options: [
+      "आवाज़ पहचान में आ रही है, इसलिए तुरंत पैसे भेज देना",
+      "उसी कॉल पर वापस फोन करके भुगतान की जानकारी माँगना",
+      "कॉल पर भरोसा न करके परिचित के पहले से ज्ञात नंबर पर अलग से संपर्क करना"
+    ],
+    correct: 2,
+    explanation: "बिल्कुल सही! आपने पहचान की पुष्टि करने का सुरक्षित तरीका चुना।",
+    lesson: "AI से किसी की आवाज़ की नकल बनाई जा सकती है। पैसे भेजने से पहले किसी दूसरे, पहले से ज्ञात माध्यम से व्यक्ति की पहचान पक्की करें।"
+  },
+  {
+    category: "फर्जी डिलीवरी ऐप",
+    title: "पार्सल के नाम पर संदिग्ध ऐप",
+    gender: "male",
+    dialogue: "आपका पार्सल रोक दिया गया है। डिलीवरी दोबारा शुरू करने के लिए इस लिंक से ऐप डाउनलोड करें और फोन की सभी अनुमतियाँ स्वीकार कर लें।",
+    question: "आपको क्या करना चाहिए?",
+    options: [
+      "लिंक से ऐप डाउनलोड करके सभी अनुमतियाँ दे देना",
+      "लिंक न खोलना और डिलीवरी कंपनी की आधिकारिक वेबसाइट या ऐप पर स्थिति जाँचना",
+      "ऐप डाउनलोड करके अपना बैंक पासवर्ड डालना"
+    ],
+    correct: 1,
+    explanation: "बिल्कुल सही! आपने संदिग्ध लिंक से ऐप डाउनलोड करने से बचाव किया।",
+    lesson: "अज्ञात ऐप आपके संदेशों, स्क्रीन या अन्य निजी जानकारी तक पहुँच माँग सकता है। पार्सल की जानकारी केवल आधिकारिक माध्यम से जाँचें।"
+  },
+  {
+    category: "SIM स्वैप और बैंक सुरक्षा",
+    title: "फोन नेटवर्क बंद और बैंक अलर्ट",
+    gender: "female",
+    dialogue: "नमस्ते, मैं आपकी बैंक सहायता टीम से बोल रही हूँ। आपका फोन नेटवर्क बंद है तो समस्या ठीक करने के लिए मुझे OTP बताइए। इससे आपका बैंक खाता सुरक्षित हो जाएगा।",
+    question: "फोन का नेटवर्क बंद हो और ऐसा कॉल आए, तो क्या करें?",
+    options: [
+      "कॉलर को OTP बताकर नेटवर्क वापस चालू करवाना",
+      "कॉलर को अपना बैंक PIN बता देना",
+      "कॉलर से बात बंद करना, आधिकारिक बैंक नंबर से संपर्क करना और संदिग्ध लेन-देन जाँचना"
+    ],
+    correct: 2,
+    explanation: "बिल्कुल सही! आपने गोपनीय जानकारी साझा करने से इनकार किया।",
+    lesson: "अचानक नेटवर्क बंद होना और संदिग्ध बैंक गतिविधि चेतावनी हो सकती है। अपने मोबाइल ऑपरेटर और बैंक से उनके आधिकारिक माध्यमों पर तुरंत संपर्क करें। OTP या PIN न बताएँ।"
+  },
+  {
+    category: "फर्जी UPI रिफंड",
+    title: "रिफंड पाने के लिए पैसे माँगना",
+    gender: "male",
+    dialogue: "आपका रिफंड तैयार है। पैसे प्राप्त करने के लिए आपके UPI ऐप पर एक अनुरोध भेजा है। उसे स्वीकार करें और अपना PIN डालें, तभी पैसा आपके खाते में आएगा।",
+    question: "रिफंड के नाम पर UPI अनुरोध आए, तो क्या करें?",
+    options: [
+      "अनुरोध ध्यान से जाँचना और अनजान व्यक्ति के पैसे माँगने वाले अनुरोध को स्वीकार न करना",
+      "रिफंड पाने के लिए तुरंत PIN डाल देना",
+      "कॉलर को अपना UPI PIN बोलकर बता देना"
+    ],
+    correct: 0,
+    explanation: "बिल्कुल सही! आपने पैसे प्राप्त करने और पैसे भेजने के अंतर को समझा।",
+    lesson: "UPI PIN डालने से आम तौर पर भुगतान अधिकृत होता है, पैसा प्राप्त नहीं होता। अनजान collect request को स्वीकार न करें और PIN कभी साझा न करें।"
+  },
+  {
+    category: "फर्जी निवेश",
+    title: "गारंटी वाले मुनाफे का विज्ञापन",
+    gender: "female",
+    dialogue: "हमारी निवेश योजना में सिर्फ सात दिनों में आपका पैसा दोगुना हो सकता है। कोई जोखिम नहीं है। आज ही पैसा जमा करें, वरना यह खास मौका खत्म हो जाएगा।",
+    question: "ऐसे निवेश प्रस्ताव पर क्या करना चाहिए?",
+    options: [
+      "जल्दी से पैसा जमा कर देना, क्योंकि मौका सीमित है",
+      "गारंटीड मुनाफे के दावे पर भरोसा न करना और निवेश की वैधता स्वतंत्र रूप से जाँचना",
+      "किसी और से उधार लेकर निवेश करना"
+    ],
+    correct: 1,
+    explanation: "बिल्कुल सही! आपने अवास्तविक मुनाफे और जल्दबाज़ी के दबाव को पहचान लिया।",
+    lesson: "बहुत अधिक और गारंटीड रिटर्न का दावा बड़ा चेतावनी संकेत है। पैसे देने से पहले संस्था और उसके नियामकीय पंजीकरण की स्वतंत्र रूप से जाँच करें।"
+  },
+  {
+    category: "WhatsApp अकाउंट सुरक्षा",
+    title: "वेरिफिकेशन कोड माँगने वाला परिचित",
+    gender: "male",
+    dialogue: "मैं तुम्हारा दोस्त बोल रहा हूँ। मेरे फोन में समस्या है। तुम्हारे नंबर पर एक वेरिफिकेशन कोड आया होगा, वह मुझे बता दो ताकि मैं अपना अकाउंट वापस खोल सकूँ।",
+    question: "आपके फोन पर आया वेरिफिकेशन कोड माँगा जाए, तो क्या करें?",
+    options: [
+      "परिचित है, इसलिए कोड भेज देना",
+      "कोड का स्क्रीनशॉट भेज देना",
+      "कोड साझा न करना और परिचित से उसके ज्ञात नंबर या दूसरे माध्यम से पुष्टि करना"
+    ],
+    correct: 2,
+    explanation: "बिल्कुल सही! आपने अपना वेरिफिकेशन कोड सुरक्षित रखा।",
+    lesson: "वेरिफिकेशन कोड से कोई दूसरा व्यक्ति आपके अकाउंट में प्रवेश कर सकता है। कोड किसी को न दें, चाहे अनुरोध परिचित के अकाउंट से ही क्यों न आया हो।"
+  },
+  {
+    category: "रिमोट एक्सेस धोखाधड़ी",
+    title: "बैंक सहायता के नाम पर स्क्रीन साझा करना",
+    gender: "female",
+    dialogue: "मैं बैंक सहायता से बोल रही हूँ। आपके खाते में समस्या है। इसे ठीक करने के लिए यह रिमोट सपोर्ट ऐप इंस्टॉल करें और अपनी स्क्रीन साझा करें। मैं सब ठीक कर दूँगी।",
+    question: "कॉलर आपसे रिमोट एक्सेस ऐप इंस्टॉल करने को कहे, तो क्या करें?",
+    options: [
+      "ऐप इंस्टॉल करके बैंक ऐप खोल देना",
+      "ऐप इंस्टॉल न करना और बैंक से उसके आधिकारिक नंबर या ऐप के माध्यम से संपर्क करना",
+      "स्क्रीन साझा करके अपना PIN टाइप करना"
+    ],
+    correct: 1,
+    explanation: "बिल्कुल सही! आपने अनजान व्यक्ति को अपने फोन का नियंत्रण देने से बचाव किया।",
+    lesson: "रिमोट एक्सेस ऐप से दूसरा व्यक्ति आपकी स्क्रीन देख सकता है या डिवाइस को नियंत्रित कर सकता है। अनजान कॉलर के कहने पर इसे इंस्टॉल न करें।"
+  }
+];
+
+const $ = id => document.getElementById(id);
+
+let currentIndex = 0;
+let correctCount = 0;
+let answeredCount = 0;
+let hasStarted = false;
+let isAnswering = false;
+let voiceList = [];
+let audioContext = null;
+let sequenceId = 0;
+let ringTimer = null;
+let voiceWarningShown = false;
+
+const hindiMaleHints = [
+  "hemant", "madhur", "ravi", "male", "man voice",
+  "amit", "aditya", "neeraj", "rahul"
+];
+
+const hindiFemaleHints = [
+  "swara", "kalpana", "heera", "female", "woman voice",
+  "lekha", "kavya", "priya"
+];
+
+function updateStats() {
+  $("totalStat").textContent = scenarios.length;
+  $("correctStat").textContent = correctCount;
+
+  const score = answeredCount === 0
+    ? 0
+    : Math.round((correctCount / answeredCount) * 100);
+
+  $("scoreStat").textContent = score + "%";
+  $("progressFill").style.width =
+    ((answeredCount / scenarios.length) * 100) + "%";
+
+  $("progressText").textContent =
+    answeredCount + " / " + scenarios.length + " पूरे";
+}
+
+function setStatus(message, warning = false) {
+  const status = $("audioStatus");
+  if (!status) return;
+  status.textContent = message;
+  status.classList.toggle("warning", warning);
+}
+
+function loadVoices() {
+  if (!("speechSynthesis" in window)) {
+    voiceList = [];
+    return;
+  }
+  voiceList = window.speechSynthesis.getVoices() || [];
+}
+
+if ("speechSynthesis" in window) {
+  loadVoices();
+  window.speechSynthesis.addEventListener?.("voiceschanged", loadVoices);
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+function isHindiVoice(voice) {
+  return /^hi(?:-|_|$)/i.test(voice.lang || "") ||
+    /hindi|हिंदी/i.test(voice.name || "");
+}
+
+function findHintedVoice(hints) {
+  const hindiVoices = voiceList.filter(isHindiVoice);
+
+  for (const hint of hints) {
+    const match = hindiVoices.find(v =>
+      (v.name || "").toLowerCase().includes(hint)
+    );
+    if (match) return match;
+  }
+
+  return null;
+}
+
+function chooseVoice(gender) {
+  loadVoices();
+
+  const hindiVoices = voiceList.filter(isHindiVoice);
+  const hints = gender === "male" ? hindiMaleHints : hindiFemaleHints;
+  const hinted = findHintedVoice(hints);
+
+  if (hinted) return { voice: hinted, exactGenderHint: true };
+
+  if (gender === "male") {
+    return {
+      voice: hindiVoices[0] || voiceList[0] || null,
+      exactGenderHint: false
+    };
+  }
+
+  const femaleVoice = findHintedVoice(hindiFemaleHints);
+  return {
+    voice: femaleVoice || hindiVoices[0] || voiceList[0] || null,
+    exactGenderHint: Boolean(femaleVoice)
+  };
+}
+
+function ensureAudioContext() {
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) return null;
+
+  try {
+    if (!audioContext) audioContext = new AudioContextClass();
+    if (audioContext.state === "suspended") audioContext.resume();
+    return audioContext;
+  } catch (error) {
+    return null;
+  }
+}
+
+/* Locally generated ringtone; no audio file is needed. */
+function playRingtone(mySequence) {
+  const ctx = ensureAudioContext();
+
+  if (!ctx) {
+    setStatus("कॉल की घंटी इस ब्राउज़र में उपलब्ध नहीं है। कॉल की आवाज़ शुरू की जा रही है।");
+    return Promise.resolve();
+  }
+
+  return new Promise(resolve => {
+    try {
+      const startAt = ctx.currentTime + 0.03;
+
+      for (let pulse = 0; pulse < 3; pulse++) {
+        const start = startAt + pulse * 0.43;
+        const oscillator = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(740, start);
+        oscillator.frequency.setValueAtTime(880, start + 0.12);
+
+        gain.gain.setValueAtTime(0.0001, start);
+        gain.gain.linearRampToValueAtTime(0.12, start + 0.025);
+        gain.gain.setValueAtTime(0.12, start + 0.20);
+        gain.gain.linearRampToValueAtTime(0.0001, start + 0.25);
+
+        oscillator.connect(gain);
+        gain.connect(ctx.destination);
+        oscillator.start(start);
+        oscillator.stop(start + 0.27);
+      }
+    } catch (error) {
+      /* Speech should still proceed if ringtone playback fails. */
+    }
+
+    ringTimer = window.setTimeout(() => {
+      if (mySequence === sequenceId) resolve();
+    }, 1450);
+  });
+}
+
+function cancelCurrentAudio() {
+  sequenceId++;
+
+  if (ringTimer !== null) {
+    clearTimeout(ringTimer);
+    ringTimer = null;
+  }
+
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+  }
+
+  return sequenceId;
+}
+
+function speakText(text, gender, mySequence, onFinished) {
+  if (!("speechSynthesis" in window)) {
+    setStatus("आपके ब्राउज़र में टेक्स्ट-टू-स्पीच उपलब्ध नहीं है। Next दबाकर अभ्यास जारी रखें।", true);
+    onFinished(false);
+    return;
+  }
+
+  loadVoices();
+
+  if (!voiceList.length) {
+    setStatus("हिंदी आवाज़ें अभी उपलब्ध नहीं हैं। कुछ सेकंड बाद दोबारा कोशिश करें या Next दबाकर आगे बढ़ें।", true);
+    onFinished(false);
+    return;
+  }
+
+  try {
+    const selected = chooseVoice(gender);
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "hi-IN";
+    utterance.rate = 0.91;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+    if (selected.voice) {
+      utterance.voice = selected.voice;
+      utterance.lang = selected.voice.lang || "hi-IN";
+    }
+
+    if (gender === "male" && !selected.exactGenderHint && !voiceWarningShown) {
+      voiceWarningShown = true;
+      setStatus(
+        "ध्यान दें: इस कंप्यूटर पर नाम से पहचानी जा सकने वाली पुरुष हिंदी आवाज़ नहीं मिली। उपलब्ध हिंदी आवाज़ इस्तेमाल होगी; उसकी आवाज़ पुरुष होने की गारंटी नहीं है।",
+        true
+      );
+    }
+
+    let completed = false;
+
+    const finish = success => {
+      if (completed) return;
+      completed = true;
+      if (mySequence === sequenceId) onFinished(success);
+    };
+
+    const fallbackTimer = window.setTimeout(() => {
+      if (completed) return;
+      if (mySequence === sequenceId) {
+        setStatus("आवाज़ पूरी होने की पुष्टि नहीं हो सकी। आप Next दबाकर आगे बढ़ सकते हैं।", true);
+        finish(false);
+      }
+    }, Math.max(12000, text.length * 170));
+
+    const safeFinish = success => {
+      clearTimeout(fallbackTimer);
+      finish(success);
+    };
+
+    utterance.onend = () => safeFinish(true);
+
+    utterance.onerror = event => {
+      if (mySequence !== sequenceId) return;
+      setStatus("आवाज़ चल नहीं पाई (" + (event.error || "audio error") + ")। आप Next दबाकर आगे बढ़ सकते हैं।", true);
+      safeFinish(false);
+    };
+
+    window.speechSynthesis.speak(utterance);
+  } catch (error) {
+    setStatus("ऑडियो शुरू नहीं हो सका। आप Next दबाकर आगे बढ़ सकते हैं।", true);
+    onFinished(false);
+  }
+}
+
+function playCurrentCall() {
+  const scenario = scenarios[currentIndex];
+  const mySequence = cancelCurrentAudio();
+
+  $("nextButton").disabled = true;
+  $("nextButton").textContent = "कॉल सुनें…";
+  setStatus("📞 फोन की घंटी बज रही है…");
+
+  playRingtone(mySequence).then(() => {
+    if (mySequence !== sequenceId) return;
+
+    setStatus("🔊 कॉल करने वाले की बात सुनें…");
+
+    /* Only the caller's dialogue is spoken. */
+    speakText(scenario.dialogue, scenario.gender, mySequence, success => {
+      if (mySequence !== sequenceId) return;
+
+      $("nextButton").disabled = true;
+      $("nextButton").textContent = "जवाब चुनें";
+      setStatus(success
+        ? "कॉल की बात पूरी हुई। अब नीचे दिए गए विकल्पों में से जवाब चुनें।"
+        : "कॉल की आवाज़ पूरी नहीं चल पाई। फिर भी नीचे अपना जवाब चुन सकते हैं।"
+      );
+
+      document.querySelectorAll(".option").forEach(button => {
+        button.disabled = false;
+      });
+    });
+  });
+}
+
+function renderScenario() {
+  const scenario = scenarios[currentIndex];
+
+  $("endScreen").classList.remove("show");
+  $("scenarioContent").style.display = "block";
+
+  $("scenarioContent").innerHTML = `
+    <div class="scenario-top">
+      <span class="category">${scenario.category}</span>
+      <span class="scenario-number">परिस्थिति ${currentIndex + 1} / ${scenarios.length}</span>
+    </div>
+
+    <h3>${scenario.title}</h3>
+
+    <div class="call-box">
+      <div class="call-label">📞 कॉल पर कही गई बात</div>
+      <p class="call-dialogue">${scenario.dialogue}</p>
+    </div>
+
+    <p class="question">${scenario.question}</p>
+
+    <div class="options" id="optionsContainer">
+      ${scenario.options.map((option, index) => `
+        <button class="option" data-index="${index}" disabled>
+          <span class="letter">${String.fromCharCode(65 + index)}</span>
+          <span>${option}</span>
+        </button>
+      `).join("")}
+    </div>
+
+    <div class="audio-status" id="audioStatus" role="status" aria-live="polite">
+      कॉल शुरू हो रही है…
+    </div>
+
+    <div class="feedback" id="feedbackBox" aria-live="polite">
+      <h4 id="feedbackTitle"></h4>
+      <p id="feedbackExplanation"></p>
+      <p><strong>सीख:</strong> <span id="feedbackLesson"></span></p>
+    </div>
+
+    <div class="controls">
+      <span style="color:#637488;font-size:13px;" id="answerStatus">कॉल सुनने के बाद जवाब चुनें।</span>
+      <button class="primary-button" id="nextButton" disabled>अगली परिस्थिति →</button>
+    </div>
+  `;
+
+  document.querySelectorAll(".option").forEach(button => {
+    button.addEventListener("click", () => {
+      selectAnswer(Number(button.dataset.index));
+    });
+  });
+
+  $("nextButton").addEventListener("click", nextScenario);
+
+  updateStats();
+}
+
+function selectAnswer(selectedIndex) {
+  if (isAnswering) return;
+
+  isAnswering = true;
+  const scenario = scenarios[currentIndex];
+  const isCorrect = selectedIndex === scenario.correct;
+
+  /* Stop the caller audio before speaking the explanation. */
+  const mySequence = cancelCurrentAudio();
+
+  answeredCount++;
+  if (isCorrect) correctCount++;
+  updateStats();
+
+  document.querySelectorAll(".option").forEach((button, index) => {
+    button.disabled = true;
+
+    if (index === scenario.correct) button.classList.add("correct");
+    if (index === selectedIndex && !isCorrect) button.classList.add("incorrect");
+  });
+
+  $("answerStatus").textContent = isCorrect
+    ? "सही जवाब!"
+    : "सही कदम समझिए।";
+
+  const feedback = $("feedbackBox");
+  feedback.classList.add("show");
+  feedback.classList.toggle("wrong", !isCorrect);
+
+  $("feedbackTitle").textContent = isCorrect
+    ? "✓ बिल्कुल सही!"
+    : "एक जोखिम छूट गया";
+
+  $("feedbackExplanation").textContent = isCorrect
+    ? scenario.explanation
+    : "सही जवाब: " + scenario.options[scenario.correct] + "। " + scenario.explanation;
+
+  $("feedbackLesson").textContent = scenario.lesson;
+
+  $("nextButton").disabled = true;
+  $("nextButton").textContent = currentIndex === scenarios.length - 1
+    ? "परिणाम देखें →"
+    : "अगली परिस्थिति →";
+
+  setStatus("🔊 सही कदम और सीख सुनाई जा रही है…");
+
+  const spokenExplanation = isCorrect
+    ? scenario.explanation + " " + scenario.lesson
+    : "इस स्थिति में एक जोखिम छूट गया। सही कदम समझिए। " +
+      "सही जवाब है: " + scenario.options[scenario.correct] + "। " +
+      scenario.lesson;
+
+  speakText(spokenExplanation, "female", mySequence, success => {
+    if (mySequence !== sequenceId) return;
+
+    $("nextButton").disabled = false;
+    $("nextButton").textContent = currentIndex === scenarios.length - 1
+      ? "परिणाम देखें →"
+      : "अगली परिस्थिति →";
+
+    setStatus(success
+      ? "व्याख्या पूरी हुई। अब अगली परिस्थिति पर जा सकते हैं।"
+      : "व्याख्या की आवाज़ पूरी नहीं चल पाई। आप सुरक्षित रूप से आगे बढ़ सकते हैं।",
+      !success
+    );
+  });
+}
+
+function nextScenario() {
+  if ($("nextButton").disabled || !isAnswering) return;
+
+  if (currentIndex >= scenarios.length - 1) {
+    showEndScreen();
+    return;
+  }
+
+  currentIndex++;
+  isAnswering = false;
+  renderScenario();
+
+  /* Every new scenario automatically rings and speaks. */
+  playCurrentCall();
+}
+
+function showEndScreen() {
+  cancelCurrentAudio();
+  $("scenarioContent").style.display = "none";
+  $("endScreen").classList.add("show");
+
+  $("finalScore").textContent = correctCount + " / " + scenarios.length;
+
+  if (correctCount === scenarios.length) {
+    $("finalMessage").textContent = "शानदार! आपने हर परिस्थिति में सुरक्षित विकल्प चुना। सतर्क रहना जारी रखें।";
+  } else if (correctCount >= 5) {
+    $("finalMessage").textContent = "अच्छा प्रयास! गलत जवाबों की सीख याद रखें और ज़रूरत हो तो फिर से अभ्यास करें।";
+  } else {
+    $("finalMessage").textContent = "अभ्यास से पहचान बेहतर होती है। दोबारा कोशिश करें और हर परिस्थिति की सीख ध्यान से पढ़ें।";
+  }
+
+  $("progressFill").style.width = "100%";
+  $("progressText").textContent = "8 / 8 पूरे";
+}
+
+function startPractice() {
+  if (hasStarted) return;
+
+  hasStarted = true;
+
+  /* The first click unlocks browser audio permissions. */
+  ensureAudioContext();
+  loadVoices();
+
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+  }
+
+  currentIndex = 0;
+  correctCount = 0;
+  answeredCount = 0;
+  isAnswering = false;
+
+  renderScenario();
+  playCurrentCall();
+}
+
+function retryPractice() {
+  cancelCurrentAudio();
+  hasStarted = true;
+  currentIndex = 0;
+  correctCount = 0;
+  answeredCount = 0;
+  isAnswering = false;
+  renderScenario();
+  playCurrentCall();
+}
+
+function goHome() {
+  window.location.href = "./SURAKSHA SAATHI homepage.html";
+}
+
+$("startButton").addEventListener("click", startPractice);
+$("retryButton").addEventListener("click", retryPractice);
+$("homeButton").addEventListener("click", goHome);
+$("endHomeButton").addEventListener("click", goHome);
+</script>
+</body>
+</html>
