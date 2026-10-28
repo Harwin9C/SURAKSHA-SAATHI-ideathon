@@ -531,3 +531,431 @@ const translations = {
     newJourney:"नई यात्रा शुरू हो गई!", errorSave:"ब्राउज़र प्रगति सुरक्षित नहीं कर पाया। आप इस बार खेल जारी रख सकते हैं।"
   }
 };
+const items = [
+  { id: "notebook", emoji: "📓", price: 20, type: "need", en: "Notebook", hi: "कॉपी" },
+  { id: "pencil", emoji: "✏️", price: 10, type: "need", en: "Pencil", hi: "पेंसिल" },
+  { id: "water", emoji: "💧", price: 10, type: "need", en: "Water bottle refill", hi: "पानी की बोतल भरना" },
+  { id: "fruit", emoji: "🍎", price: 20, type: "need", en: "Fruit snack", hi: "फल का नाश्ता" },
+  { id: "storybook", emoji: "📚", price: 30, type: "want", en: "Storybook", hi: "कहानी की किताब" },
+  { id: "football", emoji: "⚽", price: 40, type: "want", en: "Football", hi: "फुटबॉल" },
+  { id: "toy", emoji: "🧸", price: 30, type: "want", en: "Toy", hi: "खिलौना" },
+  { id: "chocolate", emoji: "🍫", price: 15, type: "want", en: "Chocolate", hi: "चॉकलेट" },
+  { id: "stickers", emoji: "🌟", price: 10, type: "want", en: "Sticker pack", hi: "स्टिकर पैक" }
+];
+
+function t(key, vars = {}) {
+  let text = translations[language][key] ?? translations.en[key] ?? key;
+  for (const [name, value] of Object.entries(vars)) {
+    text = text.replaceAll("{" + name + "}", String(value));
+  }
+  return text;
+}
+
+function money(value) {
+  return "₹" + Number(value || 0).toLocaleString("en-IN");
+}
+
+function freshState() {
+  return {
+    started: false,
+    nickname: "",
+    day: 1,
+    balance: 0,
+    received: 0,
+    spent: 0,
+    needSpent: 0,
+    wantSpent: 0,
+    purchases: [],
+    completedDays: [],
+    savedAt: null
+  };
+}
+
+function saveState() {
+  try {
+    state.savedAt = new Date().toISOString();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (error) {
+    console.warn("Could not save game progress.", error);
+  }
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return freshState();
+
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" ||
+        !Array.isArray(parsed.purchases) ||
+        !Array.isArray(parsed.completedDays) ||
+        parsed.day < 1 || parsed.day > JOURNEY_DAYS) {
+      return freshState();
+    }
+
+    return { ...freshState(), ...parsed };
+  } catch (error) {
+    return freshState();
+  }
+}
+
+function setLanguage(nextLanguage) {
+  language = nextLanguage;
+  document.documentElement.lang = language;
+  $("languageButton").textContent = language === "en" ? "हिंदी" : "English";
+  $("nickname").placeholder = t("nicknamePlaceholder");
+
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.dataset.i18n;
+    if (translations[language][key]) {
+      element.textContent = translations[language][key];
+    }
+  });
+
+  renderAll();
+}
+
+function showScreen(screenId) {
+  ["welcomeScreen", "gameScreen", "overviewScreen", "finishScreen"].forEach(id => {
+    $(id).classList.toggle("hidden", id !== screenId);
+  });
+}
+
+function updateDashboard() {
+  $("dayStat").textContent = state.day + " / " + JOURNEY_DAYS;
+  $("balanceStat").textContent = money(state.balance);
+  $("spentStat").textContent = money(state.spent);
+
+  const percent = Math.min(100, Math.round((state.balance / SAVINGS_GOAL) * 100));
+  $("goalStat").textContent = percent + "%";
+  $("goalFill").style.width = percent + "%";
+}
+
+function renderAll() {
+  updateDashboard();
+
+  if (!state.started) {
+    showScreen("welcomeScreen");
+    return;
+  }
+
+  if (state.day > JOURNEY_DAYS) {
+    showScreen("finishScreen");
+    renderFinish();
+    return;
+  }
+
+  if (!$("overviewScreen").classList.contains("hidden")) {
+    renderOverview();
+  } else if (!$("gameScreen").classList.contains("hidden")) {
+    renderGame();
+  } else {
+    showScreen("gameScreen");
+    renderGame();
+  }
+}
+
+function startJourney() {
+  const nickname = $("nickname").value.trim().slice(0, 20);
+  state = freshState();
+  state.started = true;
+  state.nickname = nickname;
+  state.day = 1;
+  state.balance = DAILY_ALLOWANCE;
+  state.received = DAILY_ALLOWANCE;
+  currentDayPurchased = new Set();
+  saveState();
+  showScreen("gameScreen");
+  renderAll();
+}
+
+function renderGame() {
+  if (state.day > JOURNEY_DAYS) {
+    showScreen("finishScreen");
+    renderFinish();
+    return;
+  }
+
+  showScreen("gameScreen");
+  $("dayTitle").textContent = t("day", { n: state.day }) + " · " +
+    t("journeyDay", { n: state.day });
+
+  $("allowancePill").textContent = state.completedDays.some(d => d.day === state.day)
+    ? t("dayFinished")
+    : t("todayAllowance");
+
+  const name = state.nickname || t("nameLabel");
+  $("welcomeBack").textContent = t("welcomeName", { name });
+
+  renderShop();
+  updateDashboard();
+}
+
+function renderShop() {
+  const grid = $("shopGrid");
+  grid.innerHTML = "";
+
+  items.forEach(item => {
+    const alreadyBought = currentDayPurchased.has(item.id);
+    const canAfford = state.balance >= item.price;
+    const card = document.createElement("article");
+    card.className = "item-card";
+
+    const emoji = document.createElement("div");
+    emoji.className = "item-emoji";
+    emoji.textContent = item.emoji;
+
+    const title = document.createElement("h3");
+    title.textContent = item[language];
+
+    const price = document.createElement("div");
+    price.className = "item-price";
+    price.textContent = money(item.price);
+
+    const type = document.createElement("span");
+    type.className = "item-type " + (item.type === "need" ? "need" : "");
+    type.textContent = t(item.type);
+
+    const description = document.createElement("small");
+    description.className = "muted";
+    description.textContent = item.type === "need"
+      ? t("needDescription")
+      : t("wantDescription");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = item.type === "need" ? "primary" : "gold";
+    button.textContent = alreadyBought
+      ? t("bought")
+      : !canAfford ? t("notEnough") : t("buy");
+    button.disabled = alreadyBought || !canAfford;
+    button.addEventListener("click", () => buyItem(item.id));
+
+    card.append(emoji, title, price, type, description, button);
+    grid.appendChild(card);
+  });
+}
+
+function showFeedback(title, message, lesson) {
+  $("feedbackTitle").textContent = title;
+  $("feedbackText").textContent = message;
+  $("feedbackLesson").textContent = lesson;
+  $("feedback").classList.add("show");
+}
+
+function buyItem(itemId) {
+  const item = items.find(i => i.id === itemId);
+  if (!item || currentDayPurchased.has(itemId)) return;
+
+  if (state.balance < item.price) {
+    showFeedback(t("notEnough"), t("notEnough"), "");
+    return;
+  }
+
+  state.balance -= item.price;
+  state.spent += item.price;
+
+  if (item.type === "need") state.needSpent += item.price;
+  else state.wantSpent += item.price;
+
+  state.purchases.push({
+    day: state.day,
+    id: item.id,
+    nameEn: item.en,
+    nameHi: item.hi,
+    price: item.price,
+    type: item.type
+  });
+
+  currentDayPurchased.add(itemId);
+
+  showFeedback(
+    t("purchaseTitle", { item: item[language] }),
+    t("purchaseFeedback", { price: item.price, balance: state.balance }),
+    t(item.type === "need" ? "needLesson" : "wantLesson")
+  );
+
+  saveState();
+  renderShop();
+  updateDashboard();
+}
+
+function saveChoice() {
+  showFeedback(
+    t("savedTitle"),
+    t("savedFeedback", { balance: state.balance }),
+    t("savedLesson")
+  );
+}
+
+function skipShopping() {
+  showFeedback(t("skipTitle"), t("skipFeedback"), t("skipLesson"));
+}
+
+function finishDay() {
+  if (!confirm(t("confirmDay"))) return;
+
+  state.completedDays.push({
+    day: state.day,
+    spent: state.purchases
+      .filter(p => p.day === state.day)
+      .reduce((sum, p) => sum + p.price, 0),
+    balance: state.balance,
+    purchaseCount: state.purchases.filter(p => p.day === state.day).length
+  });
+
+  saveState();
+
+  if (state.day >= JOURNEY_DAYS) {
+    state.day = JOURNEY_DAYS + 1;
+    saveState();
+    showScreen("finishScreen");
+    renderFinish();
+    updateDashboard();
+    return;
+  }
+
+  showScreen("overviewScreen");
+  renderOverview();
+}
+
+function renderOverview() {
+  showScreen("overviewScreen");
+
+  $("overviewBalance").textContent = money(state.balance);
+  $("receivedValue").textContent = money(state.received);
+  $("spentValue").textContent = money(state.spent);
+  $("needsValue").textContent = money(state.needSpent);
+  $("wantsValue").textContent = money(state.wantSpent);
+
+  const percent = Math.min(100, Math.round((state.balance / SAVINGS_GOAL) * 100));
+  $("overviewGoalFill").style.width = percent + "%";
+  $("goalMessage").textContent = state.balance >= SAVINGS_GOAL
+    ? t("goalReached")
+    : t("goalProgress", { balance: state.balance });
+
+  const history = $("historyList");
+  history.innerHTML = "";
+
+  if (!state.completedDays.length) {
+    const li = document.createElement("li");
+    li.textContent = t("nothingYet");
+    history.appendChild(li);
+  } else {
+    state.completedDays.forEach(day => {
+      const li = document.createElement("li");
+      li.textContent = t("dayHistory", {
+        n: day.day,
+        spent: day.spent,
+        balance: day.balance
+      });
+      history.appendChild(li);
+    });
+  }
+
+  $("learningSummary").textContent = makeLearningSummary();
+  $("overviewNextButton").textContent = state.day >= JOURNEY_DAYS
+    ? t("daySeven")
+    : t("overviewNext");
+
+  updateDashboard();
+}
+
+function makeLearningSummary() {
+  if (state.spent === 0) return t("learningSave");
+  if (state.wantSpent > state.needSpent) return t("learningWants");
+  if (state.needSpent > 0 && state.wantSpent > 0) return t("learningBalanced");
+  if (state.needSpent > 0) return t("learningNeeds");
+  return t("learningEmpty");
+}
+
+function continueJourney() {
+  if (state.day > JOURNEY_DAYS) {
+    renderFinish();
+    showScreen("finishScreen");
+    return;
+  }
+
+  state.day++;
+  state.balance += DAILY_ALLOWANCE;
+  state.received += DAILY_ALLOWANCE;
+  currentDayPurchased = new Set();
+  saveState();
+
+  showScreen("gameScreen");
+  renderGame();
+}
+
+function renderFinish() {
+  showScreen("finishScreen");
+
+  $("finalBalance").textContent = money(state.balance);
+  $("finalReceived").textContent = money(state.received);
+  $("finalSpent").textContent = money(state.spent);
+  $("finalNeeds").textContent = money(state.needSpent);
+  $("finalWants").textContent = money(state.wantSpent);
+
+  const percent = Math.min(100, Math.round((state.balance / SAVINGS_GOAL) * 100));
+  $("finalGoalFill").style.width = percent + "%";
+
+  $("finalGoalMessage").textContent = state.balance >= SAVINGS_GOAL
+    ? t("goalAtFinish")
+    : t("goalBelowFinish");
+
+  $("finalReflection").textContent = t("finishSummary", {
+    received: state.received,
+    spent: state.spent,
+    balance: state.balance
+  }) + " " + makeLearningSummary();
+
+  updateDashboard();
+}
+
+function restartJourney() {
+  if (!confirm(t("restartConfirm"))) return;
+  state = freshState();
+  currentDayPurchased = new Set();
+  saveState();
+  $("nickname").value = "";
+  showScreen("welcomeScreen");
+  renderAll();
+}
+
+/* All Home buttons return to the homepage named index.html. */
+function goHome() {
+  window.location.href = "./index.html";
+}
+
+$("languageButton").addEventListener("click", () => {
+  setLanguage(language === "en" ? "hi" : "en");
+});
+
+$("homeButton").addEventListener("click", goHome);
+$("finishHomeButton").addEventListener("click", goHome);
+$("startButton").addEventListener("click", startJourney);
+$("saveButton").addEventListener("click", saveChoice);
+$("skipButton").addEventListener("click", skipShopping);
+$("nextDayButton").addEventListener("click", finishDay);
+
+$("backButton").addEventListener("click", () => {
+  showScreen("gameScreen");
+  renderGame();
+});
+
+$("overviewNextButton").addEventListener("click", continueJourney);
+$("restartButton").addEventListener("click", restartJourney);
+
+state = loadState();
+
+if (state.started && state.day <= JOURNEY_DAYS) {
+  currentDayPurchased = new Set(
+    state.purchases
+      .filter(p => p.day === state.day)
+      .map(p => p.id)
+  );
+}
+
+setLanguage("en");
+</script>
+</body>
+</html>
