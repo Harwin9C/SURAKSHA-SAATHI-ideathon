@@ -17,9 +17,7 @@
   --pale-green: #e3f4ed;
   --white: #ffffff;
 }
-
 * { box-sizing: border-box; }
-
 body {
   margin: 0;
   font-family: "Noto Sans Devanagari", "Mangal", "Segoe UI", Arial, sans-serif;
@@ -27,9 +25,7 @@ body {
   color: var(--text);
   line-height: 1.6;
 }
-
 button, input { font: inherit; }
-
 button {
   border: 0;
   border-radius: 11px;
@@ -38,10 +34,8 @@ button {
   font-weight: 700;
   transition: transform .15s, opacity .15s;
 }
-
 button:hover { transform: translateY(-1px); }
 button:disabled { opacity: .45; cursor: not-allowed; }
-
 header {
   display: flex;
   justify-content: space-between;
@@ -51,13 +45,7 @@ header {
   background: #fff;
   border-bottom: 1px solid var(--border);
 }
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-}
-
+.brand { display: flex; align-items: center; gap: 11px; }
 .logo {
   width: 57px;
   height: 57px;
@@ -65,42 +53,21 @@ header {
   border-radius: 9px;
   background: #fff;
 }
-
 .brand h1 {
   margin: 0;
   font-size: 22px;
   line-height: 1.3;
   color: var(--green);
 }
+.brand p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+.header-actions { display: flex; align-items: center; gap: 8px; }
+.lang-button { background: var(--pale-green); color: var(--green); }
+.home-button { background: #eaf2fa; color: var(--blue); }
 
-.brand p {
-  margin: 2px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.lang-button {
-  background: var(--pale-green);
-  color: var(--green);
-}
-
-.home-button {
-  background: #eaf2fa;
-  color: var(--blue);
-}
-
-/* Back-to-home hyperlink */
 .back-home-container {
   width: min(1100px, 92%);
   margin: 12px auto 0;
 }
-
 .back-home-link {
   display: inline-block;
   color: #123e65;
@@ -110,17 +77,9 @@ header {
   font-weight: 700;
   text-decoration: none;
 }
+.back-home-link:hover { background: #d9e8f6; text-decoration: underline; }
 
-.back-home-link:hover {
-  background: #d9e8f6;
-  text-decoration: underline;
-}
-
-main {
-  width: min(1100px, 92%);
-  margin: 24px auto 40px;
-}
-
+main { width: min(1100px, 92%); margin: 24px auto 40px; }
 .hero {
   background: linear-gradient(125deg, var(--blue), var(--green));
   color: #fff;
@@ -131,15 +90,8 @@ main {
   gap: 20px;
   align-items: center;
 }
-
-.hero h2 {
-  margin: 0 0 8px;
-  font-size: clamp(27px, 4vw, 37px);
-  line-height: 1.3;
-}
-
+.hero h2 { margin: 0 0 8px; font-size: clamp(27px, 4vw, 37px); line-height: 1.3; }
 .hero p { margin: 0; color: #e4f3f0; }
-
 .hero-mark {
   background: #fff;
   border-radius: 16px;
@@ -150,13 +102,7 @@ main {
   align-items: center;
   justify-content: center;
 }
-
-.hero-mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
+.hero-mark img { width: 100%; height: 100%; object-fit: contain; }
 .virtual-note {
   margin: 15px 0;
   padding: 12px 15px;
@@ -165,19 +111,13 @@ main {
   border-radius: 11px;
   color: #6e5413;
 }
-
-.section-title {
-  margin: 28px 0 13px;
-  font-size: 23px;
-}
-
+.section-title { margin: 28px 0 13px; font-size: 23px; }
 .dashboard {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin-top: 18px;
 }
-
 .stat {
   background: #fff;
   border: 1px solid var(--border);
@@ -185,12 +125,7 @@ main {
   padding: 15px;
   min-width: 0;
 }
-
-.stat-label {
-  color: var(--muted);
-  font-size: 13px;
-}
-
+.stat-label { color: var(--muted); font-size: 13px; }
 .stat-value {
   display: block;
   font-size: clamp(20px, 3vw, 27px);
@@ -198,7 +133,6 @@ main {
   color: var(--green);
   overflow-wrap: anywhere;
 }
-
 .progress-track {
   height: 10px;
   border-radius: 20px;
@@ -206,14 +140,12 @@ main {
   background: #e3eaf0;
   margin-top: 9px;
 }
-
 .progress-fill {
   height: 100%;
   width: 0;
   background: linear-gradient(90deg, #16785f, #8acb8b);
   transition: width .25s;
 }
-
 .screen {
   margin-top: 20px;
   background: #fff;
@@ -222,21 +154,9 @@ main {
   padding: clamp(17px, 4vw, 28px);
   box-shadow: 0 6px 20px #163b5910;
 }
-
-.screen h2 {
-  margin: 0 0 8px;
-  font-size: 25px;
-}
-
+.screen h2 { margin: 0 0 8px; font-size: 25px; }
 .muted { color: var(--muted); }
-
-.nickname-row {
-  display: flex;
-  gap: 10px;
-  margin-top: 18px;
-  flex-wrap: wrap;
-}
-
+.nickname-row { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
 .nickname-row input {
   flex: 1;
   min-width: 180px;
@@ -244,30 +164,10 @@ main {
   border: 1px solid #cbd8e4;
   border-radius: 10px;
 }
-
-.primary {
-  background: var(--green);
-  color: white;
-}
-
-.secondary {
-  background: #eaf2fa;
-  color: var(--blue);
-}
-
-.gold {
-  background: #ffedbd;
-  color: #65470b;
-}
-
-.day-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
+.primary { background: var(--green); color: white; }
+.secondary { background: #eaf2fa; color: var(--blue); }
+.gold { background: #ffedbd; color: #65470b; }
+.day-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 .day-pill {
   background: #e7f4ed;
   color: #17684f;
@@ -276,14 +176,12 @@ main {
   font-size: 13px;
   font-weight: 750;
 }
-
 .choice-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 13px;
   margin-top: 17px;
 }
-
 .item-card {
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -293,23 +191,9 @@ main {
   gap: 8px;
   min-width: 0;
 }
-
-.item-emoji {
-  font-size: 37px;
-  line-height: 1.3;
-}
-
-.item-card h3 {
-  margin: 0;
-  font-size: 17px;
-}
-
-.item-price {
-  color: var(--green);
-  font-weight: 800;
-  font-size: 19px;
-}
-
+.item-emoji { font-size: 37px; line-height: 1.3; }
+.item-card h3 { margin: 0; font-size: 17px; }
+.item-price { color: var(--green); font-weight: 800; font-size: 19px; }
 .item-type {
   width: fit-content;
   border-radius: 30px;
@@ -318,14 +202,8 @@ main {
   padding: 3px 9px;
   font-size: 12px;
 }
-
-.item-type.need {
-  background: #e3f4ed;
-  color: #12664f;
-}
-
+.item-type.need { background: #e3f4ed; color: #12664f; }
 .item-card button { margin-top: auto; }
-
 .feedback {
   display: none;
   margin-top: 17px;
@@ -334,66 +212,25 @@ main {
   background: #eaf7ee;
   border: 1px solid #c7e7d0;
 }
-
 .feedback.show { display: block; }
 .feedback h3 { margin: 0 0 5px; }
 .feedback p { margin: 5px 0; }
-
-.action-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
+.action-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
 .action-row button { flex: 1; }
-
-.balance-banner {
-  padding: 17px;
-  border-radius: 13px;
-  background: #eff8f3;
-  margin: 17px 0;
-}
-
-.balance-banner strong {
-  display: block;
-  font-size: 30px;
-  color: var(--green);
-}
-
+.balance-banner { padding: 17px; border-radius: 13px; background: #eff8f3; margin: 17px 0; }
+.balance-banner strong { display: block; font-size: 30px; color: var(--green); }
 .overview-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin-top: 15px;
 }
-
-.overview-box {
-  padding: 15px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.overview-box strong {
-  display: block;
-  font-size: 22px;
-  color: var(--blue);
-}
-
-.history-list {
-  padding-left: 20px;
-}
-
+.overview-box { padding: 15px; border: 1px solid var(--border); border-radius: 12px; }
+.overview-box strong { display: block; font-size: 22px; color: var(--blue); }
+.history-list { padding-left: 20px; }
 .history-list li { margin: 7px 0; }
-
 .hidden { display: none !important; }
-
-footer {
-  text-align: center;
-  color: var(--muted);
-  padding: 20px;
-  font-size: 13px;
-}
+footer { text-align: center; color: var(--muted); padding: 20px; font-size: 13px; }
 
 @media (max-width: 720px) {
   header { padding: 12px 4%; }
@@ -407,7 +244,6 @@ footer {
   .dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-
 @media (max-width: 430px) {
   .choice-grid { grid-template-columns: 1fr; }
   .overview-grid { grid-template-columns: 1fr; }
@@ -416,26 +252,23 @@ footer {
 }
 </style>
 </head>
-
 <body>
 <header>
   <div class="brand">
-    <img class="logo" src="suraksha-saathi-logo.png"
-         alt="Suraksha Saathi original logo">
+    <img class="logo" src="suraksha-saathi-logo.png" alt="Suraksha Saathi original logo">
     <div>
       <h1>सुरक्षा साथी</h1>
       <p>SURAKSHA SAATHI · KIDS</p>
     </div>
   </div>
-
   <div class="header-actions">
-    <button class="lang-button" id="languageButton">हिंदी</button>
-    <button class="home-button" id="homeButton">⌂ Home</button>
+    <button class="lang-button" id="languageButton" type="button">हिंदी</button>
+    <button class="home-button" id="homeButton" type="button">⌂ Home</button>
   </div>
 </header>
 
 <div class="back-home-container">
-  <a class="back-home-link" href="./SURAKSHA%20SAATHI%20homepage.html">← Back to Home</a>
+  <a class="back-home-link" href="./index.html">← Back to Home</a>
 </div>
 
 <main>
@@ -469,26 +302,18 @@ footer {
     <div class="stat">
       <span class="stat-label" data-i18n="savedLabel">Savings goal</span>
       <strong class="stat-value" id="goalStat">0%</strong>
-      <div class="progress-track">
-        <div class="progress-fill" id="goalFill"></div>
-      </div>
+      <div class="progress-track"><div class="progress-fill" id="goalFill"></div></div>
     </div>
   </section>
 
   <section class="screen" id="welcomeScreen">
     <h2 data-i18n="welcomeTitle">Welcome, Money Explorer!</h2>
-    <p class="muted" data-i18n="welcomeText">
-      You will receive ₹50 in virtual money every day for seven days. Decide what to buy, what to skip, and how much to save.
-    </p>
-    <p data-i18n="goalIntro">
-      Your mission: learn about needs and wants and try to save ₹200.
-    </p>
-
+    <p class="muted" data-i18n="welcomeText">You will receive ₹50 in virtual money every day for seven days. Decide what to buy, what to skip, and how much to save.</p>
+    <p data-i18n="goalIntro">Your mission: learn about needs and wants and try to save ₹200.</p>
     <label for="nickname" data-i18n="nicknameLabel">Choose a nickname (optional)</label>
     <div class="nickname-row">
-      <input id="nickname" maxlength="20" autocomplete="off"
-             placeholder="e.g. Money Star">
-      <button class="primary" id="startButton" data-i18n="startButton">Start my journey →</button>
+      <input id="nickname" maxlength="20" autocomplete="off" placeholder="e.g. Money Star">
+      <button class="primary" id="startButton" type="button" data-i18n="startButton">Start my journey →</button>
     </div>
   </section>
 
@@ -497,125 +322,81 @@ footer {
       <h2 id="dayTitle">Day 1</h2>
       <span class="day-pill" id="allowancePill">+₹50 allowance</span>
     </div>
-
     <p id="welcomeBack" class="muted"></p>
-    <p data-i18n="chooseText">
-      What would you like to do today? Buy an item or keep your money for later.
-    </p>
-
+    <p data-i18n="chooseText">What would you like to do today? Buy an item or keep your money for later.</p>
     <h3 class="section-title" data-i18n="shopTitle">Today's shop</h3>
     <div class="choice-grid" id="shopGrid"></div>
-
     <div class="feedback" id="feedback" role="status" aria-live="polite">
       <h3 id="feedbackTitle"></h3>
       <p id="feedbackText"></p>
       <p id="feedbackLesson"></p>
     </div>
-
     <div class="action-row">
-      <button class="secondary" id="saveButton" data-i18n="saveButton">🐷 Save my money</button>
-      <button class="gold" id="skipButton" data-i18n="skipButton">⏭ Skip shopping</button>
-      <button class="primary" id="nextDayButton" data-i18n="nextDayButton">Finish day →</button>
+      <button class="secondary" id="saveButton" type="button" data-i18n="saveButton">🐷 Save my money</button>
+      <button class="gold" id="skipButton" type="button" data-i18n="skipButton">⏭ Skip shopping</button>
+      <button class="primary" id="nextDayButton" type="button" data-i18n="nextDayButton">Finish day →</button>
     </div>
-    <p class="muted" data-i18n="dayHint">
-      You can make more than one purchase each day, as long as you have enough money. Saving means keeping your balance instead of buying something.
-    </p>
+    <p class="muted" data-i18n="dayHint">You can make more than one purchase each day, as long as you have enough money. Saving means keeping your balance instead of buying something.</p>
   </section>
 
   <section class="screen hidden" id="overviewScreen">
     <h2 data-i18n="overviewTitle">My Money Overview</h2>
     <p class="muted" data-i18n="overviewIntro">Every choice teaches you something. Look at how your virtual money journey is going.</p>
-
     <div class="balance-banner">
       <span data-i18n="currentBalance">Money you have left</span>
       <strong id="overviewBalance">₹0</strong>
       <span id="goalMessage"></span>
-      <div class="progress-track">
-        <div class="progress-fill" id="overviewGoalFill"></div>
-      </div>
+      <div class="progress-track"><div class="progress-fill" id="overviewGoalFill"></div></div>
     </div>
-
     <div class="overview-grid">
-      <div class="overview-box">
-        <span data-i18n="receivedLabel">Allowance received</span>
-        <strong id="receivedValue">₹0</strong>
-      </div>
-      <div class="overview-box">
-        <span data-i18n="spentOverview">Total purchases</span>
-        <strong id="spentValue">₹0</strong>
-      </div>
-      <div class="overview-box">
-        <span data-i18n="needsOverview">Spent on needs</span>
-        <strong id="needsValue">₹0</strong>
-      </div>
-      <div class="overview-box">
-        <span data-i18n="wantsOverview">Spent on wants</span>
-        <strong id="wantsValue">₹0</strong>
-      </div>
+      <div class="overview-box"><span data-i18n="receivedLabel">Allowance received</span><strong id="receivedValue">₹0</strong></div>
+      <div class="overview-box"><span data-i18n="spentOverview">Total purchases</span><strong id="spentValue">₹0</strong></div>
+      <div class="overview-box"><span data-i18n="needsOverview">Spent on needs</span><strong id="needsValue">₹0</strong></div>
+      <div class="overview-box"><span data-i18n="wantsOverview">Spent on wants</span><strong id="wantsValue">₹0</strong></div>
     </div>
-
     <h3 class="section-title" data-i18n="historyTitle">My journey so far</h3>
     <ul class="history-list" id="historyList"></ul>
-
     <div class="feedback show">
       <h3 data-i18n="learningTitle">💡 What can I learn?</h3>
       <p id="learningSummary"></p>
     </div>
-
     <div class="action-row">
-      <button class="secondary" id="backButton" data-i18n="backButton">← Back to today's choices</button>
-      <button class="primary" id="overviewNextButton" data-i18n="overviewNext">Continue journey →</button>
+      <button class="secondary" id="backButton" type="button" data-i18n="backButton">← Back to today's choices</button>
+      <button class="primary" id="overviewNextButton" type="button" data-i18n="overviewNext">Continue journey →</button>
     </div>
   </section>
 
   <section class="screen hidden" id="finishScreen">
     <h2 data-i18n="finishTitle">Journey complete!</h2>
     <p class="muted" data-i18n="finishIntro">You have completed your seven-day virtual money journey.</p>
-
     <div class="balance-banner">
       <span data-i18n="finalBalance">Your final balance</span>
       <strong id="finalBalance">₹0</strong>
       <span id="finalGoalMessage"></span>
-      <div class="progress-track">
-        <div class="progress-fill" id="finalGoalFill"></div>
-      </div>
+      <div class="progress-track"><div class="progress-fill" id="finalGoalFill"></div></div>
     </div>
-
     <div class="overview-grid">
-      <div class="overview-box">
-        <span data-i18n="finalReceived">Total allowance</span>
-        <strong id="finalReceived">₹0</strong>
-      </div>
-      <div class="overview-box">
-        <span data-i18n="finalSpent">Total spent</span>
-        <strong id="finalSpent">₹0</strong>
-      </div>
-      <div class="overview-box">
-        <span data-i18n="finalNeeds">Spent on needs</span>
-        <strong id="finalNeeds">₹0</strong>
-      </div>
-      <div class="overview-box">
-        <span data-i18n="finalWants">Spent on wants</span>
-        <strong id="finalWants">₹0</strong>
-      </div>
+      <div class="overview-box"><span data-i18n="finalReceived">Total allowance</span><strong id="finalReceived">₹0</strong></div>
+      <div class="overview-box"><span data-i18n="finalSpent">Total spent</span><strong id="finalSpent">₹0</strong></div>
+      <div class="overview-box"><span data-i18n="finalNeeds">Spent on needs</span><strong id="finalNeeds">₹0</strong></div>
+      <div class="overview-box"><span data-i18n="finalWants">Spent on wants</span><strong id="finalWants">₹0</strong></div>
     </div>
-
     <h3 class="section-title" data-i18n="reflectionTitle">Your money reflection</h3>
     <p id="finalReflection"></p>
-
     <div class="action-row">
-      <button class="primary" id="restartButton" data-i18n="restartButton">Start a new journey ↻</button>
-      <button class="secondary" id="finishHomeButton" data-i18n="homeButton">⌂ Home</button>
+      <button class="primary" id="restartButton" type="button" data-i18n="restartButton">Start a new journey ↻</button>
+      <button class="secondary" id="finishHomeButton" type="button" data-i18n="homeButton">⌂ Home</button>
     </div>
   </section>
 </main>
 
-<footer data-i18n="footerText">
-  Suraksha Saathi · Learn today, make thoughtful choices tomorrow.
-</footer>
+<footer data-i18n="footerText">Suraksha Saathi · Learn today, make thoughtful choices tomorrow.</footer>
 
 <script>
 "use strict";
+
+/* This helper was missing before and is required by all the buttons. */
+const $ = id => document.getElementById(id);
 
 const DAILY_ALLOWANCE = 50;
 const JOURNEY_DAYS = 7;
@@ -628,621 +409,125 @@ let currentDayPurchased = new Set();
 
 const translations = {
   en: {
-    heroTitle: "My Money Journey!",
-    heroText: "Make choices, learn about money, and work towards your savings goal.",
-    virtualNote: "🪙 This is a learning game. All money is virtual — no real money is used.",
-    dayLabel: "Current day",
-    balanceLabel: "Available balance",
-    spentLabel: "Total spent",
-    savedLabel: "Savings goal",
-    welcomeTitle: "Welcome, Money Explorer!",
-    welcomeText: "You will receive ₹50 in virtual money every day for seven days. Decide what to buy, what to skip, and how much to save.",
-    goalIntro: "Your mission: learn about needs and wants and try to save ₹200.",
-    nicknameLabel: "Choose a nickname (optional)",
-    startButton: "Start my journey →",
-    chooseText: "What would you like to do today? Buy an item or keep your money for later.",
-    shopTitle: "Today's shop",
-    saveButton: "🐷 Save my money",
-    skipButton: "⏭ Skip shopping",
-    nextDayButton: "Finish day →",
-    dayHint: "You can make more than one purchase each day, as long as you have enough money. Saving means keeping your balance instead of buying something.",
-    overviewTitle: "My Money Overview",
-    overviewIntro: "Every choice teaches you something. Look at how your virtual money journey is going.",
-    currentBalance: "Money you have left",
-    receivedLabel: "Allowance received",
-    spentOverview: "Total purchases",
-    needsOverview: "Spent on needs",
-    wantsOverview: "Spent on wants",
-    historyTitle: "My journey so far",
-    learningTitle: "💡 What can I learn?",
-    backButton: "← Back to today's choices",
-    overviewNext: "Continue journey →",
-    finishTitle: "Journey complete!",
-    finishIntro: "You have completed your seven-day virtual money journey.",
-    finalBalance: "Your final balance",
-    finalReceived: "Total allowance",
-    finalSpent: "Total spent",
-    finalNeeds: "Spent on needs",
-    finalWants: "Spent on wants",
-    reflectionTitle: "Your money reflection",
-    restartButton: "Start a new journey ↻",
-    homeButton: "⌂ Home",
-    footerText: "Suraksha Saathi · Learn today, make thoughtful choices tomorrow.",
-    need: "Need",
-    want: "Want",
-    buy: "Buy",
-    bought: "Bought ✓",
-    notEnough: "Not enough money",
-    welcomeName: "Ready to make thoughtful money choices, {name}?",
-    day: "Day {n}",
-    allowance: "+₹50 allowance",
-    purchaseTitle: "You bought {item}!",
-    purchaseFeedback: "You spent ₹{price}. Your balance is now ₹{balance}.",
-    needLesson: "This is a need — something useful for everyday life. Plan for needs before spending on extras.",
-    wantLesson: "This is a want — something enjoyable but not always essential. Wants can be part of a plan, too.",
-    savedTitle: "Good thinking!",
-    savedFeedback: "You kept your money instead of buying something right now. Your balance is ₹{balance}.",
-    savedLesson: "Saving gives you more choices later and helps you work towards a goal. You can still choose to spend thoughtfully another day.",
-    skipTitle: "You chose to wait.",
-    skipFeedback: "You did not buy anything this time. Your money stays available for another day.",
-    skipLesson: "Waiting before buying can help you decide whether something is really worth it.",
-    dayComplete: "Day {n} complete!",
-    dayCompleteText: "Your balance carries forward. Tomorrow you will receive another ₹50.",
-    dayFinished: "Day finished",
-    dayHistory: "Day {n}: received ₹50, spent ₹{spent}, balance ₹{balance}.",
-    goalReached: "🎉 You reached your ₹200 savings goal!",
-    goalProgress: "You have saved ₹{balance} towards your ₹200 goal.",
-    goalNotReached: "You have ₹{balance}. Keep practising — the goal is a guide, not a test.",
-    goalAtFinish: "You reached your goal! Great planning.",
-    goalBelowFinish: "You did not reach ₹200 this time, and that's okay. You can learn from your choices and try again.",
-    learningBalanced: "You spent on both needs and wants. Keep thinking about what matters most and leave room for savings.",
-    learningNeeds: "You focused on needs. Remember that a planned treat can be okay too, as long as you consider your budget.",
-    learningWants: "You spent more on wants. Next time, consider whether you need anything first and whether you want to save for a bigger goal.",
-    learningSave: "You kept some money available. Saving can help you reach a bigger goal, while planned spending can also be useful.",
-    learningEmpty: "You made few or no purchases. Think about what you actually need, what you want, and what you would like to save for.",
-    spentNeedHistory: "Needs",
-    spentWantHistory: "Wants",
-    spentNone: "No purchases",
-    confirmDay: "Finish this day and receive the next day's allowance?",
-    restartConfirm: "Start a new journey? Your current journey on this browser will be replaced.",
-    daySeven: "This is the final day. Finish the day to see your complete journey!",
-    journeyDay: "Journey Day {n} of 7",
-    nameLabel: "Money Explorer",
-    todayAllowance: "Today's allowance: ₹50",
-    alreadyBought: "You have already bought this item today.",
-    nicknamePlaceholder: "e.g. Money Star",
-    overviewSpentNote: "Money spent on purchases",
-    totalReceivedNote: "₹50 per day for 7 days",
-    finishSummary: "You received ₹{received}, spent ₹{spent}, and finished with ₹{balance}.",
-    goalPercent: "{n}% of goal",
-    needDescription: "Useful for everyday life",
-    wantDescription: "Fun or enjoyable, but not essential",
-    purchaseCount: "Purchases: {n}",
-    nothingYet: "No completed days yet.",
-    totalDays: "Days completed: {n} / 7",
-    newJourney: "New journey started!",
-    errorSave: "Your browser could not save progress. You can still play during this visit."
+    heroTitle:"My Money Journey!",
+    heroText:"Make choices, learn about money, and work towards your savings goal.",
+    virtualNote:"🪙 This is a learning game. All money is virtual — no real money is used.",
+    dayLabel:"Current day", balanceLabel:"Available balance", spentLabel:"Total spent", savedLabel:"Savings goal",
+    welcomeTitle:"Welcome, Money Explorer!",
+    welcomeText:"You will receive ₹50 in virtual money every day for seven days. Decide what to buy, what to skip, and how much to save.",
+    goalIntro:"Your mission: learn about needs and wants and try to save ₹200.",
+    nicknameLabel:"Choose a nickname (optional)", startButton:"Start my journey →",
+    chooseText:"What would you like to do today? Buy an item or keep your money for later.",
+    shopTitle:"Today's shop", saveButton:"🐷 Save my money", skipButton:"⏭ Skip shopping",
+    nextDayButton:"Finish day →",
+    dayHint:"You can make more than one purchase each day, as long as you have enough money. Saving means keeping your balance instead of buying something.",
+    overviewTitle:"My Money Overview",
+    overviewIntro:"Every choice teaches you something. Look at how your virtual money journey is going.",
+    currentBalance:"Money you have left", receivedLabel:"Allowance received",
+    spentOverview:"Total purchases", needsOverview:"Spent on needs", wantsOverview:"Spent on wants",
+    historyTitle:"My journey so far", learningTitle:"💡 What can I learn?",
+    backButton:"← Back to today's choices", overviewNext:"Continue journey →",
+    finishTitle:"Journey complete!", finishIntro:"You have completed your seven-day virtual money journey.",
+    finalBalance:"Your final balance", finalReceived:"Total allowance", finalSpent:"Total spent",
+    finalNeeds:"Spent on needs", finalWants:"Spent on wants",
+    reflectionTitle:"Your money reflection", restartButton:"Start a new journey ↻",
+    homeButton:"⌂ Home", footerText:"Suraksha Saathi · Learn today, make thoughtful choices tomorrow.",
+    need:"Need", want:"Want", buy:"Buy", bought:"Bought ✓", notEnough:"Not enough money",
+    welcomeName:"Ready to make thoughtful money choices, {name}?",
+    day:"Day {n}", allowance:"+₹50 allowance", purchaseTitle:"You bought {item}!",
+    purchaseFeedback:"You spent ₹{price}. Your balance is now ₹{balance}.",
+    needLesson:"This is a need — something useful for everyday life. Plan for needs before spending on extras.",
+    wantLesson:"This is a want — something enjoyable but not always essential. Wants can be part of a plan, too.",
+    savedTitle:"Good thinking!",
+    savedFeedback:"You kept your money instead of buying something right now. Your balance is ₹{balance}.",
+    savedLesson:"Saving gives you more choices later and helps you work towards a goal. You can still choose to spend thoughtfully another day.",
+    skipTitle:"You chose to wait.",
+    skipFeedback:"You did not buy anything this time. Your money stays available for another day.",
+    skipLesson:"Waiting before buying can help you decide whether something is really worth it.",
+    dayComplete:"Day {n} complete!", dayCompleteText:"Your balance carries forward. Tomorrow you will receive another ₹50.",
+    dayFinished:"Day finished", dayHistory:"Day {n}: received ₹50, spent ₹{spent}, balance ₹{balance}.",
+    goalReached:"🎉 You reached your ₹200 savings goal!",
+    goalProgress:"You have saved ₹{balance} towards your ₹200 goal.",
+    goalNotReached:"You have ₹{balance}. Keep practising — the goal is a guide, not a test.",
+    goalAtFinish:"You reached your goal! Great planning.",
+    goalBelowFinish:"You did not reach ₹200 this time, and that's okay. You can learn from your choices and try again.",
+    learningBalanced:"You spent on both needs and wants. Keep thinking about what matters most and leave room for savings.",
+    learningNeeds:"You focused on needs. Remember that a planned treat can be okay too, as long as you consider your budget.",
+    learningWants:"You spent more on wants. Next time, consider whether you need anything first and whether you want to save for a bigger goal.",
+    learningSave:"You kept some money available. Saving can help you reach a bigger goal, while planned spending can also be useful.",
+    learningEmpty:"You made few or no purchases. Think about what you actually need, what you want, and what you would like to save for.",
+    spentNeedHistory:"Needs", spentWantHistory:"Wants", spentNone:"No purchases",
+    confirmDay:"Finish this day and receive the next day's allowance?",
+    restartConfirm:"Start a new journey? Your current journey on this browser will be replaced.",
+    daySeven:"This is the final day. Finish the day to see your complete journey!",
+    journeyDay:"Journey Day {n} of 7", nameLabel:"Money Explorer",
+    todayAllowance:"Today's allowance: ₹50", alreadyBought:"You have already bought this item today.",
+    nicknamePlaceholder:"e.g. Money Star", overviewSpentNote:"Money spent on purchases",
+    totalReceivedNote:"₹50 per day for 7 days", finishSummary:"You received ₹{received}, spent ₹{spent}, and finished with ₹{balance}.",
+    goalPercent:"{n}% of goal", needDescription:"Useful for everyday life",
+    wantDescription:"Fun or enjoyable, but not essential", purchaseCount:"Purchases: {n}",
+    nothingYet:"No completed days yet.", totalDays:"Days completed: {n} / 7",
+    newJourney:"New journey started!", errorSave:"Your browser could not save progress. You can still play during this visit."
   },
   hi: {
-    heroTitle: "मेरी पैसों की यात्रा!",
-    heroText: "फैसले लें, पैसों के बारे में सीखें और अपने बचत लक्ष्य की ओर बढ़ें।",
-    virtualNote: "🪙 यह सीखने वाला खेल है। सारा पैसा आभासी है — असली पैसे का इस्तेमाल नहीं होगा।",
-    dayLabel: "आज का दिन",
-    balanceLabel: "उपलब्ध राशि",
-    spentLabel: "कुल खर्च",
-    savedLabel: "बचत का लक्ष्य",
-    welcomeTitle: "स्वागत है, पैसे के खोजी!",
-    welcomeText: "आपको सात दिनों तक हर दिन ₹50 आभासी पैसे मिलेंगे। तय करें कि क्या खरीदना है, क्या छोड़ना है और कितना बचाना है।",
-    goalIntro: "आपका मिशन: ज़रूरत और इच्छा में अंतर समझना और ₹200 बचाने की कोशिश करना।",
-    nicknameLabel: "अपना उपनाम चुनें (ज़रूरी नहीं)",
-    startButton: "मेरी यात्रा शुरू करें →",
-    chooseText: "आज आप क्या करना चाहेंगे? कोई चीज़ खरीदें या पैसे बाद के लिए बचाकर रखें।",
-    shopTitle: "आज की दुकान",
-    saveButton: "🐷 मेरे पैसे बचाएँ",
-    skipButton: "⏭ खरीदारी छोड़ें",
-    nextDayButton: "दिन पूरा करें →",
-    dayHint: "पर्याप्त पैसे होने पर आप एक दिन में एक से ज़्यादा चीज़ें खरीद सकते हैं। बचत का मतलब है अभी खरीदने के बजाय अपनी राशि बचाकर रखना।",
-    overviewTitle: "मेरे पैसों का हिसाब",
-    overviewIntro: "हर फैसला आपको कुछ सिखाता है। देखें कि आपकी आभासी पैसों की यात्रा कैसी चल रही है।",
-    currentBalance: "आपके पास बचे पैसे",
-    receivedLabel: "मिली हुई राशि",
-    spentOverview: "कुल खरीदारी",
-    needsOverview: "ज़रूरतों पर खर्च",
-    wantsOverview: "इच्छाओं पर खर्च",
-    historyTitle: "अब तक की मेरी यात्रा",
-    learningTitle: "💡 मैं क्या सीख सकता हूँ?",
-    backButton: "← आज के विकल्पों पर लौटें",
-    overviewNext: "यात्रा जारी रखें →",
-    finishTitle: "यात्रा पूरी हुई!",
-    finishIntro: "आपने सात दिनों की आभासी पैसों की यात्रा पूरी कर ली है।",
-    finalBalance: "आपके पास बचे पैसे",
-    finalReceived: "कुल मिली राशि",
-    finalSpent: "कुल खर्च",
-    finalNeeds: "ज़रूरतों पर खर्च",
-    finalWants: "इच्छाओं पर खर्च",
-    reflectionTitle: "आपके पैसों से मिली सीख",
-    restartButton: "नई यात्रा शुरू करें ↻",
-    homeButton: "⌂ होम",
-    footerText: "सुरक्षा साथी · आज सीखें, कल सोच-समझकर फैसले लें।",
-    need: "ज़रूरत",
-    want: "इच्छा",
-    buy: "खरीदें",
-    bought: "खरीद लिया ✓",
-    notEnough: "पैसे कम हैं",
-    welcomeName: "पैसों के बारे में सोच-समझकर फैसले लेने के लिए तैयार हैं, {name}?",
-    day: "दिन {n}",
-    allowance: "+₹50 की राशि",
-    purchaseTitle: "आपने {item} खरीदा!",
-    purchaseFeedback: "आपने ₹{price} खर्च किए। अब आपके पास ₹{balance} हैं।",
-    needLesson: "यह एक ज़रूरत है — रोज़मर्रा के जीवन में उपयोगी चीज़। अतिरिक्त चीज़ों पर खर्च करने से पहले ज़रूरतों के लिए योजना बनाएँ।",
-    wantLesson: "यह एक इच्छा है — आनंद देने वाली, लेकिन हमेशा ज़रूरी नहीं। सही योजना के साथ इच्छाओं पर खर्च करना भी ठीक हो सकता है।",
-    savedTitle: "अच्छा फैसला!",
-    savedFeedback: "आपने अभी कुछ खरीदने के बजाय पैसे बचाए। अब आपके पास ₹{balance} हैं।",
-    savedLesson: "बचत से भविष्य में ज़्यादा विकल्प मिलते हैं और लक्ष्य तक पहुँचने में मदद मिलती है। आप किसी दूसरे दिन सोच-समझकर खर्च भी कर सकते हैं।",
-    skipTitle: "आपने इंतज़ार करने का फैसला किया।",
-    skipFeedback: "आपने इस बार कुछ नहीं खरीदा। आपके पैसे अगले दिन के लिए उपलब्ध रहेंगे।",
-    skipLesson: "खरीदने से पहले थोड़ा रुकने से यह तय करने में मदद मिल सकती है कि चीज़ सच में उपयोगी है या नहीं।",
-    dayComplete: "दिन {n} पूरा हुआ!",
-    dayCompleteText: "आपकी बची राशि अगले दिन के लिए रहेगी। कल आपको फिर ₹50 मिलेंगे।",
-    dayFinished: "दिन पूरा हुआ",
-    dayHistory: "दिन {n}: ₹50 मिले, ₹{spent} खर्च हुए, ₹{balance} बचे।",
-    goalReached: "🎉 आपने ₹200 का बचत लक्ष्य पूरा कर लिया!",
-    goalProgress: "आपने ₹200 के लक्ष्य के लिए ₹{balance} बचाए हैं।",
-    goalNotReached: "आपके पास ₹{balance} हैं। अभ्यास जारी रखें — लक्ष्य सीखने के लिए है, परीक्षा नहीं।",
-    goalAtFinish: "आपने अपना लक्ष्य पूरा कर लिया! बहुत अच्छी योजना।",
-    goalBelowFinish: "इस बार आप ₹200 तक नहीं पहुँचे, और यह ठीक है। अपने फैसलों से सीखें और फिर कोशिश करें।",
-    learningBalanced: "आपने ज़रूरतों और इच्छाओं दोनों पर खर्च किया। सोचें कि क्या सबसे ज़रूरी है और बचत के लिए भी जगह रखें।",
-    learningNeeds: "आपने ज़रूरतों पर ध्यान दिया। योजना बनाकर कभी-कभी अपनी पसंद की चीज़ लेना भी ठीक है, यदि बजट अनुमति दे।",
-    learningWants: "आपने इच्छाओं पर ज़्यादा खर्च किया। अगली बार पहले ज़रूरतों और बड़े बचत लक्ष्य के बारे में सोचें।",
-    learningSave: "आपने कुछ पैसे बचाकर रखे। बचत बड़े लक्ष्य तक पहुँचने में मदद करती है, और सोच-समझकर खर्च करना भी उपयोगी हो सकता है।",
-    learningEmpty: "आपने बहुत कम या कोई खरीदारी नहीं की। सोचें कि आपको क्या चाहिए, क्या पसंद है और किस लक्ष्य के लिए बचत करनी है।",
-    spentNeedHistory: "ज़रूरतें",
-    spentWantHistory: "इच्छाएँ",
-    spentNone: "कोई खरीदारी नहीं",
-    confirmDay: "क्या आप यह दिन पूरा करके अगले दिन की राशि लेना चाहते हैं?",
-    restartConfirm: "नई यात्रा शुरू करें? इस ब्राउज़र में आपकी मौजूदा यात्रा बदल जाएगी।",
-    daySeven: "यह आखिरी दिन है। पूरी यात्रा का हिसाब देखने के लिए दिन पूरा करें!",
-    journeyDay: "यात्रा का दिन {n} / 7",
-    nameLabel: "पैसों के खोजी",
-    todayAllowance: "आज की राशि: ₹50",
-    alreadyBought: "आप आज यह चीज़ पहले ही खरीद चुके हैं।",
-    nicknamePlaceholder: "जैसे: पैसे का सितारा",
-    overviewSpentNote: "खरीदारी पर खर्च किए पैसे",
-    totalReceivedNote: "7 दिनों तक हर दिन ₹50",
-    finishSummary: "आपको ₹{received} मिले, आपने ₹{spent} खर्च किए और अंत में ₹{balance} बचे।",
-    goalPercent: "लक्ष्य का {n}%",
-    needDescription: "रोज़मर्रा के जीवन में उपयोगी",
-    wantDescription: "मज़ेदार, लेकिन ज़रूरी नहीं",
-    purchaseCount: "खरीदारी: {n}",
-    nothingYet: "अभी कोई दिन पूरा नहीं हुआ।",
-    totalDays: "पूरे हुए दिन: {n} / 7",
-    newJourney: "नई यात्रा शुरू हो गई!",
-    errorSave: "ब्राउज़र प्रगति सुरक्षित नहीं कर पाया। आप इस बार खेल जारी रख सकते हैं।"
+    heroTitle:"मेरी पैसों की यात्रा!",
+    heroText:"फैसले लें, पैसों के बारे में सीखें और अपने बचत लक्ष्य की ओर बढ़ें।",
+    virtualNote:"🪙 यह सीखने वाला खेल है। सारा पैसा आभासी है — असली पैसे का इस्तेमाल नहीं होगा।",
+    dayLabel:"आज का दिन", balanceLabel:"उपलब्ध राशि", spentLabel:"कुल खर्च", savedLabel:"बचत का लक्ष्य",
+    welcomeTitle:"स्वागत है, पैसे के खोजी!",
+    welcomeText:"आपको सात दिनों तक हर दिन ₹50 आभासी पैसे मिलेंगे। तय करें कि क्या खरीदना है, क्या छोड़ना है और कितना बचाना है।",
+    goalIntro:"आपका मिशन: ज़रूरत और इच्छा में अंतर समझना और ₹200 बचाने की कोशिश करना।",
+    nicknameLabel:"अपना उपनाम चुनें (ज़रूरी नहीं)", startButton:"मेरी यात्रा शुरू करें →",
+    chooseText:"आज आप क्या करना चाहेंगे? कोई चीज़ खरीदें या पैसे बाद के लिए बचाकर रखें।",
+    shopTitle:"आज की दुकान", saveButton:"🐷 मेरे पैसे बचाएँ", skipButton:"⏭ खरीदारी छोड़ें",
+    nextDayButton:"दिन पूरा करें →",
+    dayHint:"पर्याप्त पैसे होने पर आप एक दिन में एक से ज़्यादा चीज़ें खरीद सकते हैं। बचत का मतलब है अभी खरीदने के बजाय अपनी राशि बचाकर रखना।",
+    overviewTitle:"मेरे पैसों का हिसाब",
+    overviewIntro:"हर फैसला आपको कुछ सिखाता है। देखें कि आपकी आभासी पैसों की यात्रा कैसी चल रही है।",
+    currentBalance:"आपके पास बचे पैसे", receivedLabel:"मिली हुई राशि",
+    spentOverview:"कुल खरीदारी", needsOverview:"ज़रूरतों पर खर्च", wantsOverview:"इच्छाओं पर खर्च",
+    historyTitle:"अब तक की मेरी यात्रा", learningTitle:"💡 मैं क्या सीख सकता हूँ?",
+    backButton:"← आज के विकल्पों पर लौटें", overviewNext:"यात्रा जारी रखें →",
+    finishTitle:"यात्रा पूरी हुई!", finishIntro:"आपने सात दिनों की आभासी पैसों की यात्रा पूरी कर ली है।",
+    finalBalance:"आपके पास बचे पैसे", finalReceived:"कुल मिली राशि", finalSpent:"कुल खर्च",
+    finalNeeds:"ज़रूरतों पर खर्च", finalWants:"इच्छाओं पर खर्च",
+    reflectionTitle:"आपके पैसों से मिली सीख", restartButton:"नई यात्रा शुरू करें ↻",
+    homeButton:"⌂ होम", footerText:"सुरक्षा साथी · आज सीखें, कल सोच-समझकर फैसले लें।",
+    need:"ज़रूरत", want:"इच्छा", buy:"खरीदें", bought:"खरीद लिया ✓", notEnough:"पैसे कम हैं",
+    welcomeName:"पैसों के बारे में सोच-समझकर फैसले लेने के लिए तैयार हैं, {name}?",
+    day:"दिन {n}", allowance:"+₹50 की राशि", purchaseTitle:"आपने {item} खरीदा!",
+    purchaseFeedback:"आपने ₹{price} खर्च किए। अब आपके पास ₹{balance} हैं।",
+    needLesson:"यह एक ज़रूरत है — रोज़मर्रा के जीवन में उपयोगी चीज़। अतिरिक्त चीज़ों पर खर्च करने से पहले ज़रूरतों के लिए योजना बनाएँ।",
+    wantLesson:"यह एक इच्छा है — आनंद देने वाली, लेकिन हमेशा ज़रूरी नहीं। सही योजना के साथ इच्छाओं पर खर्च करना भी ठीक हो सकता है।",
+    savedTitle:"अच्छा फैसला!",
+    savedFeedback:"आपने अभी कुछ खरीदने के बजाय पैसे बचाए। अब आपके पास ₹{balance} हैं।",
+    savedLesson:"बचत से भविष्य में ज़्यादा विकल्प मिलते हैं और लक्ष्य तक पहुँचने में मदद मिलती है। आप किसी दूसरे दिन सोच-समझकर खर्च भी कर सकते हैं।",
+    skipTitle:"आपने इंतज़ार करने का फैसला किया।",
+    skipFeedback:"आपने इस बार कुछ नहीं खरीदा। आपके पैसे अगले दिन के लिए उपलब्ध रहेंगे।",
+    skipLesson:"खरीदने से पहले थोड़ा रुकने से यह तय करने में मदद मिल सकती है कि चीज़ सच में उपयोगी है या नहीं।",
+    dayComplete:"दिन {n} पूरा हुआ!", dayCompleteText:"आपकी बची राशि अगले दिन के लिए रहेगी। कल आपको फिर ₹50 मिलेंगे।",
+    dayFinished:"दिन पूरा हुआ", dayHistory:"दिन {n}: ₹50 मिले, ₹{spent} खर्च हुए, ₹{balance} बचे।",
+    goalReached:"🎉 आपने ₹200 का बचत लक्ष्य पूरा कर लिया!",
+    goalProgress:"आपने ₹200 के लक्ष्य के लिए ₹{balance} बचाए हैं।",
+    goalNotReached:"आपके पास ₹{balance} हैं। अभ्यास जारी रखें — लक्ष्य सीखने के लिए है, परीक्षा नहीं।",
+    goalAtFinish:"आपने अपना लक्ष्य पूरा कर लिया! बहुत अच्छी योजना।",
+    goalBelowFinish:"इस बार आप ₹200 तक नहीं पहुँचे, और यह ठीक है। अपने फैसलों से सीखें और फिर कोशिश करें।",
+    learningBalanced:"आपने ज़रूरतों और इच्छाओं दोनों पर खर्च किया। सोचें कि क्या सबसे ज़रूरी है और बचत के लिए भी जगह रखें।",
+    learningNeeds:"आपने ज़रूरतों पर ध्यान दिया। योजना बनाकर कभी-कभी अपनी पसंद की चीज़ लेना भी ठीक है, यदि बजट अनुमति दे।",
+    learningWants:"आपने इच्छाओं पर ज़्यादा खर्च किया। अगली बार पहले ज़रूरतों और बड़े बचत लक्ष्य के बारे में सोचें।",
+    learningSave:"आपने कुछ पैसे बचाकर रखे। बचत बड़े लक्ष्य तक पहुँचने में मदद करती है, और सोच-समझकर खर्च करना भी उपयोगी हो सकता है।",
+    learningEmpty:"आपने बहुत कम या कोई खरीदारी नहीं की। सोचें कि आपको क्या चाहिए, क्या पसंद है और किस लक्ष्य के लिए बचत करनी है।",
+    spentNeedHistory:"ज़रूरतें", spentWantHistory:"इच्छाएँ", spentNone:"कोई खरीदारी नहीं",
+    confirmDay:"क्या आप यह दिन पूरा करके अगले दिन की राशि लेना चाहते हैं?",
+    restartConfirm:"नई यात्रा शुरू करें? इस ब्राउज़र में आपकी मौजूदा यात्रा बदल जाएगी।",
+    daySeven:"यह आखिरी दिन है। पूरी यात्रा का हिसाब देखने के लिए दिन पूरा करें!",
+    journeyDay:"यात्रा का दिन {n} / 7", nameLabel:"पैसों के खोजी",
+    todayAllowance:"आज की राशि: ₹50", alreadyBought:"आप आज यह चीज़ पहले ही खरीद चुके हैं।",
+    nicknamePlaceholder:"जैसे: पैसे का सितारा", overviewSpentNote:"खरीदारी पर खर्च किए पैसे",
+    totalReceivedNote:"7 दिनों तक हर दिन ₹50", finishSummary:"आपको ₹{received} मिले, आपने ₹{spent} खर्च किए और अंत में ₹{balance} बचे।",
+    goalPercent:"लक्ष्य का {n}%", needDescription:"रोज़मर्रा के जीवन में उपयोगी",
+    wantDescription:"मज़ेदार, लेकिन ज़रूरी नहीं", purchaseCount:"खरीदारी: {n}",
+    nothingYet:"अभी कोई दिन पूरा नहीं हुआ।", totalDays:"पूरे हुए दिन: {n} / 7",
+    newJourney:"नई यात्रा शुरू हो गई!", errorSave:"ब्राउज़र प्रगति सुरक्षित नहीं कर पाया। आप इस बार खेल जारी रख सकते हैं।"
   }
 };
-
-```javascript
-const items = [
-  { id: "notebook", emoji: "📓", price: 20, type: "need", en: "Notebook", hi: "कॉपी" },
-  { id: "pencil", emoji: "✏️", price: 10, type: "need", en: "Pencil", hi: "पेंसिल" },
-  { id: "water", emoji: "💧", price: 10, type: "need", en: "Water bottle refill", hi: "पानी की बोतल भरना" },
-  { id: "fruit", emoji: "🍎", price: 20, type: "need", en: "Fruit snack", hi: "फल का नाश्ता" },
-  { id: "storybook", emoji: "📚", price: 30, type: "want", en: "Storybook", hi: "कहानी की किताब" },
-  { id: "football", emoji: "⚽", price: 40, type: "want", en: "Football", hi: "फुटबॉल" },
-  { id: "toy", emoji: "🧸", price: 30, type: "want", en: "Toy", hi: "खिलौना" },
-  { id: "chocolate", emoji: "🍫", price: 15, type: "want", en: "Chocolate", hi: "चॉकलेट" },
-  { id: "stickers", emoji: "🌟", price: 10, type: "want", en: "Sticker pack", hi: "स्टिकर पैक" }
-];
-
-function t(key, vars = {}) {
-  let text = translations[language][key] ?? translations.en[key] ?? key;
-  for (const [name, value] of Object.entries(vars)) {
-    text = text.replaceAll("{" + name + "}", String(value));
-  }
-  return text;
-}
-
-function money(value) {
-  return "₹" + Number(value || 0).toLocaleString("en-IN");
-}
-
-function freshState() {
-  return {
-    started: false,
-    nickname: "",
-    day: 1,
-    balance: 0,
-    received: 0,
-    spent: 0,
-    needSpent: 0,
-    wantSpent: 0,
-    purchases: [],
-    completedDays: [],
-    savedAt: null
-  };
-}
-
-function saveState() {
-  try {
-    state.savedAt = new Date().toISOString();
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch (error) {
-    console.warn("Could not save game progress.", error);
-  }
-}
-
-function loadState() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return freshState();
-
-    const parsed = JSON.parse(raw);
-    if (!parsed || typeof parsed !== "object" ||
-        !Array.isArray(parsed.purchases) ||
-        !Array.isArray(parsed.completedDays) ||
-        parsed.day < 1 || parsed.day > JOURNEY_DAYS) {
-      return freshState();
-    }
-
-    return { ...freshState(), ...parsed };
-  } catch (error) {
-    return freshState();
-  }
-}
-
-function setLanguage(nextLanguage) {
-  language = nextLanguage;
-  document.documentElement.lang = language;
-  $("languageButton").textContent = language === "en" ? "हिंदी" : "English";
-  $("nickname").placeholder = t("nicknamePlaceholder");
-
-  document.querySelectorAll("[data-i18n]").forEach(element => {
-    const key = element.dataset.i18n;
-    if (translations[language][key]) {
-      element.textContent = translations[language][key];
-    }
-  });
-
-  renderAll();
-}
-
-function showScreen(screenId) {
-  ["welcomeScreen", "gameScreen", "overviewScreen", "finishScreen"].forEach(id => {
-    $(id).classList.toggle("hidden", id !== screenId);
-  });
-}
-
-function updateDashboard() {
-  $("dayStat").textContent = state.day + " / " + JOURNEY_DAYS;
-  $("balanceStat").textContent = money(state.balance);
-  $("spentStat").textContent = money(state.spent);
-
-  const percent = Math.min(100, Math.round((state.balance / SAVINGS_GOAL) * 100));
-  $("goalStat").textContent = percent + "%";
-  $("goalFill").style.width = percent + "%";
-}
-
-function renderAll() {
-  updateDashboard();
-
-  if (!state.started) {
-    showScreen("welcomeScreen");
-    return;
-  }
-
-  if (state.day > JOURNEY_DAYS) {
-    showScreen("finishScreen");
-    renderFinish();
-    return;
-  }
-
-  if (!$("overviewScreen").classList.contains("hidden")) {
-    renderOverview();
-  } else if (!$("gameScreen").classList.contains("hidden")) {
-    renderGame();
-  } else {
-    showScreen("gameScreen");
-    renderGame();
-  }
-}
-
-function startJourney() {
-  const nickname = $("nickname").value.trim().slice(0, 20);
-  state = freshState();
-  state.started = true;
-  state.nickname = nickname;
-  state.day = 1;
-  state.balance = DAILY_ALLOWANCE;
-  state.received = DAILY_ALLOWANCE;
-  currentDayPurchased = new Set();
-  saveState();
-  showScreen("gameScreen");
-  renderAll();
-}
-
-function renderGame() {
-  if (state.day > JOURNEY_DAYS) {
-    showScreen("finishScreen");
-    renderFinish();
-    return;
-  }
-
-  showScreen("gameScreen");
-  $("dayTitle").textContent = t("day", { n: state.day }) + " · " +
-    t("journeyDay", { n: state.day });
-  $("allowancePill").textContent = state.completedDays.some(d => d.day === state.day)
-    ? t("dayFinished")
-    : t("todayAllowance");
-
-  const name = state.nickname || t("nameLabel");
-  $("welcomeBack").textContent = t("welcomeName", { name });
-
-  renderShop();
-  updateDashboard();
-}
-
-function renderShop() {
-  const grid = $("shopGrid");
-  grid.innerHTML = "";
-
-  items.forEach(item => {
-    const alreadyBought = currentDayPurchased.has(item.id);
-    const canAfford = state.balance >= item.price;
-    const card = document.createElement("article");
-    card.className = "item-card";
-
-    const emoji = document.createElement("div");
-    emoji.className = "item-emoji";
-    emoji.textContent = item.emoji;
-
-    const title = document.createElement("h3");
-    title.textContent = item[language];
-
-    const price = document.createElement("div");
-    price.className = "item-price";
-    price.textContent = money(item.price);
-
-    const type = document.createElement("span");
-    type.className = "item-type " + (item.type === "need" ? "need" : "");
-    type.textContent = t(item.type);
-
-    const description = document.createElement("small");
-    description.className = "muted";
-    description.textContent = item.type === "need"
-      ? t("needDescription")
-      : t("wantDescription");
-
-    const button = document.createElement("button");
-    button.className = item.type === "need" ? "primary" : "gold";
-    button.textContent = alreadyBought
-      ? t("bought")
-      : !canAfford ? t("notEnough") : t("buy");
-    button.disabled = alreadyBought || !canAfford;
-    button.addEventListener("click", () => buyItem(item.id));
-
-    card.append(emoji, title, price, type, description, button);
-    grid.appendChild(card);
-  });
-}
-
-function showFeedback(title, message, lesson) {
-  $("feedbackTitle").textContent = title;
-  $("feedbackText").textContent = message;
-  $("feedbackLesson").textContent = lesson;
-  $("feedback").classList.add("show");
-}
-
-function buyItem(itemId) {
-  const item = items.find(i => i.id === itemId);
-  if (!item || currentDayPurchased.has(itemId)) return;
-
-  if (state.balance < item.price) {
-    showFeedback(t("notEnough"), t("notEnough"), "");
-    return;
-  }
-
-  state.balance -= item.price;
-  state.spent += item.price;
-
-  if (item.type === "need") state.needSpent += item.price;
-  else state.wantSpent += item.price;
-
-  state.purchases.push({
-    day: state.day,
-    id: item.id,
-    nameEn: item.en,
-    nameHi: item.hi,
-    price: item.price,
-    type: item.type
-  });
-
-  currentDayPurchased.add(itemId);
-
-  showFeedback(
-    t("purchaseTitle", { item: item[language] }),
-    t("purchaseFeedback", { price: item.price, balance: state.balance }),
-    t(item.type === "need" ? "needLesson" : "wantLesson")
-  );
-
-  saveState();
-  renderShop();
-  updateDashboard();
-}
-
-function saveChoice() {
-  showFeedback(
-    t("savedTitle"),
-    t("savedFeedback", { balance: state.balance }),
-    t("savedLesson")
-  );
-}
-
-function skipShopping() {
-  showFeedback(t("skipTitle"), t("skipFeedback"), t("skipLesson"));
-}
-
-function finishDay() {
-  if (!confirm(t("confirmDay"))) return;
-
-  state.completedDays.push({
-    day: state.day,
-    spent: state.purchases
-      .filter(p => p.day === state.day)
-      .reduce((sum, p) => sum + p.price, 0),
-    balance: state.balance,
-    purchaseCount: state.purchases.filter(p => p.day === state.day).length
-  });
-
-  saveState();
-
-  if (state.day >= JOURNEY_DAYS) {
-    state.day = JOURNEY_DAYS + 1;
-    saveState();
-    showScreen("finishScreen");
-    renderFinish();
-    updateDashboard();
-    return;
-  }
-
-  showScreen("overviewScreen");
-  renderOverview();
-}
-
-function renderOverview() {
-  showScreen("overviewScreen");
-
-  $("overviewBalance").textContent = money(state.balance);
-  $("receivedValue").textContent = money(state.received);
-  $("spentValue").textContent = money(state.spent);
-  $("needsValue").textContent = money(state.needSpent);
-  $("wantsValue").textContent = money(state.wantSpent);
-
-  const percent = Math.min(100, Math.round((state.balance / SAVINGS_GOAL) * 100));
-  $("overviewGoalFill").style.width = percent + "%";
-  $("goalMessage").textContent = state.balance >= SAVINGS_GOAL
-    ? t("goalReached")
-    : t("goalProgress", { balance: state.balance });
-
-  const history = $("historyList");
-  history.innerHTML = "";
-
-  if (!state.completedDays.length) {
-    const li = document.createElement("li");
-    li.textContent = t("nothingYet");
-    history.appendChild(li);
-  } else {
-    state.completedDays.forEach(day => {
-      const li = document.createElement("li");
-      li.textContent = t("dayHistory", {
-        n: day.day,
-        spent: day.spent,
-        balance: day.balance
-      });
-      history.appendChild(li);
-    });
-  }
-
-  $("learningSummary").textContent = makeLearningSummary();
-  $("overviewNextButton").textContent = state.day >= JOURNEY_DAYS
-    ? t("daySeven")
-    : t("overviewNext");
-
-  updateDashboard();
-}
-
-function makeLearningSummary() {
-  if (state.spent === 0) return t("learningSave");
-
-  if (state.wantSpent > state.needSpent) return t("learningWants");
-  if (state.needSpent > 0 && state.wantSpent > 0) return t("learningBalanced");
-  if (state.needSpent > 0) return t("learningNeeds");
-  return t("learningEmpty");
-}
-
-function continueJourney() {
-  if (state.day > JOURNEY_DAYS) {
-    renderFinish();
-    showScreen("finishScreen");
-    return;
-  }
-
-  state.day++;
-  state.balance += DAILY_ALLOWANCE;
-  state.received += DAILY_ALLOWANCE;
-  currentDayPurchased = new Set();
-  saveState();
-
-  showScreen("gameScreen");
-  renderGame();
-}
-
-function renderFinish() {
-  showScreen("finishScreen");
-
-  $("finalBalance").textContent = money(state.balance);
-  $("finalReceived").textContent = money(state.received);
-  $("finalSpent").textContent = money(state.spent);
-  $("finalNeeds").textContent = money(state.needSpent);
-  $("finalWants").textContent = money(state.wantSpent);
-
-  const percent = Math.min(100, Math.round((state.balance / SAVINGS_GOAL) * 100));
-  $("finalGoalFill").style.width = percent + "%";
-
-  $("finalGoalMessage").textContent = state.balance >= SAVINGS_GOAL
-    ? t("goalAtFinish")
-    : t("goalBelowFinish");
-
-  $("finalReflection").textContent = t("finishSummary", {
-    received: state.received,
-    spent: state.spent,
-    balance: state.balance
-  }) + " " + makeLearningSummary();
-
-  updateDashboard();
-}
-
-function restartJourney() {
-  if (!confirm(t("restartConfirm"))) return;
-  state = freshState();
-  currentDayPurchased = new Set();
-  saveState();
-  $("nickname").value = "";
-  showScreen("welcomeScreen");
-  renderAll();
-}
-
-/* The Home button and hyperlink use the same homepage file. */
-function goHome() {
-  window.location.href = "./SURAKSHA%20SAATHI%20homepage.html";
-}
-
-$("languageButton").addEventListener("click", () => {
-  setLanguage(language === "en" ? "hi" : "en");
-});
-
-$("homeButton").addEventListener("click", goHome);
-$("finishHomeButton").addEventListener("click", goHome);
-$("startButton").addEventListener("click", startJourney);
-$("saveButton").addEventListener("click", saveChoice);
-$("skipButton").addEventListener("click", skipShopping);
-$("nextDayButton").addEventListener("click", finishDay);
-$("backButton").addEventListener("click", () => {
-  showScreen("gameScreen");
-  renderGame();
-});
-$("overviewNextButton").addEventListener("click", continueJourney);
-$("restartButton").addEventListener("click", restartJourney);
-
-state = loadState();
-if (state.started && state.day <= JOURNEY_DAYS) {
-  currentDayPurchased = new Set(
-    state.purchases
-      .filter(p => p.day === state.day)
-      .map(p => p.id)
-  );
-}
-setLanguage("en");
-
-</script>
-</body>
-</html>
